@@ -442,7 +442,17 @@
 <h3 class="sh3">Objetivo</h3>
 <p class="ts2" style="color:var(--g600)">Documentar el modelo operativo de cada linea de negocio (ECS, BDL, BOP, TD, KK, TBX) y crear un framework estandarizado &mdash; el Deployment Playbook &mdash; para que SUMIMSA pueda habilitar una linea adicional o desplegar un equipo nuevo sin reinventar el proceso. Hoy el know-how vive en la cabeza de los gerentes. Cuando se agrega un equipo (malacates, 550 HP, componentes criticos) o se entra a un segmento (Cabezales IP, TBX en otro sector), se reinventa el proceso desde cero.</p>
 
-<h3 class="sh3">Modelos a Disenar &mdash; Deployment Playbook (9 Modulos)</h3>
+<h3 class="sh3">Modelos a Disenar</h3>
+<div class="mc mb1" style="border-left-color:var(--navy)">
+<div class="mc-t">Modelo Operativo Estandarizado por Linea</div>
+<div class="mc-d">Disenar una plantilla maestra configurable para ejecutar servicios de forma repetible, controlada y escalable, adaptable a ECS, BDL, BOP, TD, KK y futuras lineas. Parametrizar tiempos, cuadrillas, herramientas, refacciones, criticidad y reglas operativas segun cada linea, sin perder estandar comun.</div>
+</div>
+<div class="mc mb1" style="border-left-color:var(--navy)">
+<div class="mc-t">Modelo de Expansion</div>
+<div class="mc-d">Habilitar nuevas lineas utilizando la misma arquitectura, evitando reinvenciones operativas y acelerando la maduracion. El framework para lograr esto es el Deployment Playbook de 9 modulos:</div>
+</div>
+
+<h3 class="sh3">Deployment Playbook &mdash; 9 Modulos</h3>
 
 <div class="g3">
 <div class="card" style="border-left:4px solid var(--navy);border-radius:0 var(--r) var(--r) 0">
@@ -531,8 +541,12 @@
 <div class="mc-d"><strong>Impacto:</strong> Pasar de 21% de partidas activas a &gt;40%. El contrato tiene $264M pendientes &mdash; cada punto porcentual de cobertura adicional representa ~$3.5M en venta potencial. El dashboard de market share permite actuar mes a mes: en febrero se perdieron 4 rigs (3 a GOME, 1 a MPG) &mdash; sin tracking, esto se detecta tarde.</div>
 </div>
 <div class="mc mb1">
+<div class="mc-t">Mapa de Gaps Comerciales-Operativos</div>
+<div class="mc-d">Identificar donde no se esta vendiendo y por que: falta de capacidad, falta de especializacion, falta de refaccion, falta de presencia geografica o falta de inclusion contractual. Cruce sistematico entre demanda detectada en campo y capacidad instalada por linea/region.</div>
+</div>
+<div class="mc mb1">
 <div class="mc-t">Modelo de Licitacion / Inclusion de Partidas en el Anexo C</div>
-<div class="mc-d"><strong>Impacto:</strong> Formalizar los 32 SKUs de alta demanda ocultos (68% de items, $10.2M) como partidas del Anexo C. Hoy ~40% de la venta es via intercambios sin partida formal. Esto convierte venta informal en venta contractual con precio fijo, reduce riesgo de rechazo por PEMEX, y habilita facturacion directa.</div>
+<div class="mc-d">Estructura estandar para futuras licitaciones, ampliaciones o inclusiones de partidas. Formalizar los 32 SKUs de alta demanda ocultos (68% de items, $10.2M). Hoy ~40% de la venta es via intercambios sin partida formal &mdash; convertir en venta contractual con precio fijo.</div>
 </div>
 
 <h3 class="sh3">Acciones</h3>
@@ -582,12 +596,24 @@
 
 <h3 class="sh3">Modelos a Disenar</h3>
 <div class="mc gn mb1">
-<div class="mc-t">Modelo de Documentacion Integrada + Trazabilidad de Estimaciones</div>
-<div class="mc-d"><strong>Impacto:</strong> $24.8M ejecutados sin estimacion formal. Llevar dias de estimacion de 205 a &lt;30 libera cash atrapado y reduce gasto financiero (hoy 34% de la venta &mdash; cada mes de anticipacion en cobranza ahorra ~$160K en intereses). Pipeline Kanban con 5 gates documentales y SLAs por linea.</div>
+<div class="mc-t">Modelo de Documentacion Integrada en la Operacion</div>
+<div class="mc-d">Asegurar que toda OT ejecutada genere desde origen la evidencia minima necesaria para soportar RAF, estimacion y cobro. Checklist digital de 5 gates por OT: folio Gestioo, oficio PEMEX, RAF, PV en BC, partida contractual vinculada.</div>
+</div>
+<div class="mc gn mb1">
+<div class="mc-t">Modelo de Trazabilidad de Estimacion y Facturacion</div>
+<div class="mc-d">Redisenar el flujo completo de monetizacion (OT &rarr; RAF &rarr; Estimacion &rarr; CFDI &rarr; CxC) para reducir tiempos muertos, retrabajos y servicios ejecutados sin convertir en ingreso. Pipeline Kanban con estados, aging, monto y responsable por linea. $24.8M ejecutados sin estimacion formal &mdash; llevar de 205 dias a &lt;30.</div>
+</div>
+<div class="mc gn mb1">
+<div class="mc-t">Modelo de SLA y Gobernanza de Estimaciones / Cobranza</div>
+<div class="mc-d">Definir tiempos objetivo, roles, responsables y escalaciones para que el pipeline no dependa de seguimiento informal. Rutina semanal por linea con dueno de cada etapa. Cada mes de anticipacion en cobranza ahorra ~$160K en intereses.</div>
+</div>
+<div class="mc gn mb1">
+<div class="mc-t">Torre de Control de Monetizacion</div>
+<div class="mc-d">Visibilidad completa al estado de cada servicio (ejecutado, documentado, estimado, facturado, cobrado), con trazabilidad por monto, linea, responsable y aging. Rutinas operativas y financieras que convierten el seguimiento en un mecanismo activo de desbloqueo y priorizacion economica. Dashboard en Power BI.</div>
 </div>
 <div class="mc gn mb1">
 <div class="mc-t">Modelo de Disponibilidad de Refacciones y S&OP</div>
-<div class="mc-d"><strong>Impacto:</strong> Inventario excedente de $5.1M a &lt;$2M. Rotacion de 1.7x a 4&ndash;6x (benchmark NOV/SLB). Fill rate de refacciones criticas de "no se mide" a &gt;95%. Cada $1M de inventario excedente liquidado reduce ~$100K/ano de costo financiero. S&OP mensual que produce decisiones, no solo informacion.</div>
+<div class="mc-d">Integrar mantenimiento, demanda operativa, refacciones, herramientas y cuadrillas para anticipar necesidades y evitar reaccion de ultimo minuto. Inventario excedente de $5.1M a &lt;$2M. Rotacion de 1.7x a 4&ndash;6x. Fill rate de refacciones criticas &gt;95%. S&OP mensual que produce decisiones, no solo informacion.</div>
 </div>
 
 <h3 class="sh3">Acciones</h3>
@@ -643,11 +669,19 @@
 <h3 class="sh3">Modelos a Disenar</h3>
 <div class="mc gl mb1">
 <div class="mc-t">Modelo Operativo Estandarizado por Linea</div>
-<div class="mc-d"><strong>Impacto:</strong> ECS opera al 86% de cumplimiento y 13% EBITDA &mdash; es la referencia. BDL opera al 32% y -75% EBITDA. El modelo busca replicar la logica de ECS (linea benchmark) en las demas, adaptada a cada contexto. El rango de mejora en EBITDA viene de cerrar el gap entre el margen presupuestado (27.8% promedio) y el real (-6.8%).</div>
+<div class="mc-d">Plantilla maestra configurable para ejecutar servicios de forma repetible, controlada y escalable. Parametriza tiempos, cuadrillas, herramientas, refacciones, criticidad y reglas operativas segun cada linea, sin perder estandar comun. ECS (86% cumplimiento, 13% EBITDA) es la referencia &mdash; replicar su logica en BDL (32%, -75%), BOP (28%), TD (41%).</div>
 </div>
 <div class="mc gl mb1">
-<div class="mc-t">Modelo de Capacidad, Balance de Personal y Squat Crew</div>
-<div class="mc-d"><strong>Impacto:</strong> Nomina operativa hoy es 25% de la venta ($1.42M). BDL gasta 71 centavos de nomina por cada $1 vendido; ECS gasta 15 centavos. Llevar el promedio a 15&ndash;18% (benchmark OFS: NOV 15%, Halliburton 14&ndash;17%) libera entre $400K&ndash;$700K semestrales. El Squat Crew reduce 30&ndash;40% el HC de mantenimiento sin afectar operacion &mdash; pool regional de mecanicos, soldadores, electricistas compartidos entre lineas (ECS&harr;KK&harr;BOP&harr;BDL).</div>
+<div class="mc-t">Modelo de Capacidad y Balance de Personal</div>
+<div class="mc-d">Definir cuantas cuadrillas, perfiles y especialistas se requieren por linea y como debe crecer la estructura conforme aumente la demanda. Ratios actuales: TD 5.25 HC/eq, ECS 8.1, BDL 4.45, BOP 0.35. Alinear HC a demanda real, no a requerimiento del cliente sin validar facturacion.</div>
+</div>
+<div class="mc gl mb1">
+<div class="mc-t">Modelo de Cuadrilla de Servicios SWAT</div>
+<div class="mc-d">Crear una capacidad transversal de especialistas (Equipo SWAT) para intervenciones complejas, fallas criticas, arranque de nuevas lineas y reduccion de dependencia de personas clave. Pool regional de mecanicos, soldadores, electricistas compartidos entre lineas (ECS&harr;KK&harr;BOP&harr;BDL). Reduccion estimada: 30&ndash;40% HC de mantenimiento sin afectar capacidad de respuesta.</div>
+</div>
+<div class="mc gl mb1">
+<div class="mc-t">Modelo de Costeo Operativo por OT / Servicio</div>
+<div class="mc-d">Asegurar que el costo real de la OT quede visible antes del CFDI, integrando mano de obra, refacciones e indirectos. Hoy de cada $1 que vende el 601, $0.81 se va en costo. Nomina operativa BDL: 71% de su venta vs ECS: 15%. Benchmark OFS: NOV margen operativo 17.5%, SLB 18&ndash;20%, Halliburton 16&ndash;20%.</div>
 </div>
 
 <h3 class="sh3">Acciones</h3>
@@ -703,8 +737,20 @@
 
 <h3 class="sh3">Modelos a Disenar</h3>
 <div class="mc pu mb1">
-<div class="mc-t">Modelo de Mantenimiento, Confiabilidad y CMMS</div>
-<div class="mc-d"><strong>Impacto:</strong> Asertividad de programacion de 24% a &gt;70% (el modulo de preventivo ya existe, solo falta activarlo &mdash; esto dispara automaticamente OTs programadas y reduce reactivas del 76% al &lt;40%). NPT SUMIMSA de 5.9% a &lt;4%. Cada punto de NPT reducido equivale a ~$350K en penalizaciones evitadas y continuidad de contrato. Planes preventivos por equipo/linea basados en OEM + historial real. Ruta a Nivel 3 digital (sensores IoT: vibracion, presion, temperatura, horometros) para BDL y TD.</div>
+<div class="mc-t">Modelo de Gestion de Mantenimiento y Confiabilidad</div>
+<div class="mc-d">Disenar la estrategia de mantenimiento preventivo, correctivo y ruta a predictivo para sostener disponibilidad y cumplimiento de servicio. NPT SUMIMSA de 5.9% a &lt;4%. Cada punto de NPT reducido equivale a ~$350K en penalizaciones evitadas y continuidad de contrato.</div>
+</div>
+<div class="mc pu mb1">
+<div class="mc-t">Modelo de Funcionalidad de CMMS (Gestioo)</div>
+<div class="mc-d">Convertir Gestioo en la fuente oficial de control de mantenimiento y ejecucion tecnica, con arbol de activos, estados OT, evidencias y trazabilidad. Activar 3 modulos ya pagados: MTTO preventivo, Stock MRO, Carga en tiempo real. De 2.8/5 a 4.5/5 adopcion. Disenar ruta critica para la decision de implementacion de un nuevo CMMS si Gestioo no escala.</div>
+</div>
+<div class="mc pu mb1">
+<div class="mc-t">Modelo de Estandarizacion de Planes Preventivos</div>
+<div class="mc-d">Construir planes por equipo/linea con base en OEM, historial y realidad operativa, para elevar cumplimiento y reducir correctivos emergentes. Asertividad de programacion de 24% a &gt;70% (el modulo de preventivo ya existe, solo falta activarlo &mdash; esto dispara automaticamente OTs programadas y reduce reactivas del 76% al &lt;40%).</div>
+</div>
+<div class="mc pu mb1">
+<div class="mc-t">Modelo de Disponibilidad de Refacciones Criticas y S&OP</div>
+<div class="mc-d">Asegurar que la calidad y confiabilidad del servicio no se rompan por falta de partes, tiempos de reposicion o inventario mal segmentado. Integrar mantenimiento, demanda operativa, refacciones, herramientas y cuadrillas para anticipar necesidades y evitar reaccion de ultimo minuto. Fill rate meta &gt;95%.</div>
 </div>
 
 <h3 class="sh3">Acciones</h3>
