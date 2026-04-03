@@ -853,34 +853,33 @@
 <nav class="toc-panel">
     <button class="toc-close" onclick="closeToc()">&times;</button>
     <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.9rem;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--g100);color:var(--g800)">Reporte de Oportunidades</div>
-    <div class="toc-section">General</div>
+    <div class="toc-section">Macro</div>
     <a href="#portada" onclick="closeToc()">Portada</a>
-    <a href="#resumen" onclick="closeToc()">Resumen de Madurez</a>
-    <div class="toc-section">Eje 01</div>
-    <a href="#e01" onclick="closeToc()">Modelo Operativo & Lineas</a>
+    <a href="#resumen-macro" onclick="closeToc()">Resumen Macro</a>
+    <a href="#macro-operaciones" onclick="closeToc()">Operaciones (601 & TBX)</a>
+    <a href="#macro-balanceo" onclick="closeToc()">Balanceo de Personal</a>
+    <a href="#macro-distribucion" onclick="closeToc()">Distribucion y Logistica</a>
+    <a href="#macro-control" onclick="closeToc()">Control Interno</a>
+    <a href="#macro-sistemas" onclick="closeToc()">Sistemas (TI)</a>
+    <div class="toc-section">Desarrollo 601</div>
+    <a href="#sep-601" onclick="closeToc()">Introduccion 601</a>
+    <a href="#e01" onclick="closeToc()">Eje 01: Modelo Operativo</a>
     <a href="#e01-p" onclick="closeToc()">Propuesta Eje 01</a>
-    <div class="toc-section">Eje 02</div>
-    <a href="#e02" onclick="closeToc()">Oportunidad de Contrato</a>
+    <a href="#e02" onclick="closeToc()">Eje 02: Oportunidad Contrato</a>
     <a href="#e02-p" onclick="closeToc()">Propuesta Eje 02</a>
-    <div class="toc-section">Eje 03</div>
-    <a href="#e03" onclick="closeToc()">Comercializacion & Pipeline</a>
+    <a href="#e03" onclick="closeToc()">Eje 03: Comercializacion</a>
     <a href="#e03-p" onclick="closeToc()">Propuesta Eje 03</a>
-    <div class="toc-section">Eje 04</div>
-    <a href="#e04" onclick="closeToc()">Programacion y Ejecucion de OTs</a>
+    <a href="#e04" onclick="closeToc()">Eje 04: Programacion OTs</a>
     <a href="#e04-p" onclick="closeToc()">Propuesta Eje 04</a>
-    <div class="toc-section">Eje 05</div>
-    <a href="#e05" onclick="closeToc()">Calidad & Confiabilidad</a>
+    <a href="#e05" onclick="closeToc()">Eje 05: Calidad</a>
     <a href="#e05-p" onclick="closeToc()">Propuesta Eje 05</a>
-    <div class="toc-section">Diagnostico Macro</div>
-    <a href="#macro" onclick="closeToc()">Mas alla del 601</a>
-    <div class="toc-section">TBX</div>
-    <a href="#tbx" onclick="closeToc()">Operaciones TBX</a>
+    <div class="toc-section">Desarrollo Areas</div>
+    <a href="#sep-areas" onclick="closeToc()">Introduccion Areas</a>
+    <a href="#tbx" onclick="closeToc()">TBX</a>
     <a href="#tbx-p" onclick="closeToc()">Propuesta TBX</a>
-    <div class="toc-section">Balanceo de Personal</div>
-    <a href="#balanceo" onclick="closeToc()">Cuadrillas & Demanda</a>
+    <a href="#balanceo" onclick="closeToc()">Balanceo de Personal</a>
     <a href="#balanceo-p" onclick="closeToc()">Propuesta Balanceo</a>
-    <div class="toc-section">Distribucion</div>
-    <a href="#distribucion" onclick="closeToc()">Red Logistica</a>
+    <a href="#distribucion" onclick="closeToc()">Distribucion y Logistica</a>
     <a href="#distribucion-p" onclick="closeToc()">Propuesta Distribucion</a>
     <div class="toc-section">Cierre</div>
     <a href="#siguiente" onclick="closeToc()">Siguiente Paso</a>
@@ -892,7 +891,7 @@
 <div class="portada" id="portada">
     <div class="portada-overline">Geminis 02 &middot; Diagnostico de Madurez Operativa</div>
     <h1>Reporte de Oportunidades</h1>
-    <h2>Diagnostico de Madurez Operativa</h2>
+    <h2>Diagnostico de Madurez Operativa &mdash; Vista Macro y Desarrollo 601</h2>
     <div class="portada-project">Geminis 02 &middot; SUMIMSA &times; London Consulting Group &middot; Abril 2026</div>
 
     <div class="portada-scores">
@@ -939,97 +938,235 @@
 </div>
 
 <!-- ========================================== -->
-<!-- SLIDE 1: RESUMEN DE MADUREZ                -->
+<!-- RESUMEN MACRO — 5 AREAS DE EVALUACION      -->
 <!-- ========================================== -->
-<div class="slide alt" id="resumen">
+<div class="slide alt" id="resumen-macro">
     <div class="slide-inner">
         <div style="font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--g300);margin-bottom:0.6rem;">Resumen Ejecutivo</div>
-        <h2 style="font-size:2rem;font-weight:900;margin-bottom:2rem;">Madurez Operativa por Eje</h2>
+        <h2 style="font-size:2rem;font-weight:900;margin-bottom:2rem;">Diagnostico Macro &mdash; 5 Areas de Evaluacion</h2>
 
-        <div class="key-numbers">
-            <div class="key-number">
-                <div class="kn-val">39</div>
-                <div class="kn-label">Oportunidades evaluadas</div>
+        <div class="portada-scores" style="justify-content:flex-start;max-width:100%;margin-bottom:2.5rem;">
+            <div class="portada-score-card" style="border-left-color: var(--red);max-width:200px;">
+                <div class="ps-score c-red">1.7<span style="font-size:0.9rem;color:var(--g300)">/5</span></div>
+                <div class="ps-label">Operaciones (601 & TBX)</div>
             </div>
-            <div class="key-number">
-                <div class="kn-val c-red">1.5<span style="font-size:1.2rem;color:var(--g300)">/5</span></div>
-                <div class="kn-label">Madurez promedio</div>
+            <div class="portada-score-card" style="border-left-color: var(--red);max-width:200px;">
+                <div class="ps-score c-red">1.4<span style="font-size:0.9rem;color:var(--g300)">/5</span></div>
+                <div class="ps-label">Balanceo de Personal</div>
             </div>
-            <div class="key-number">
-                <div class="kn-val">8</div>
-                <div class="kn-label">Ejes diagnosticados</div>
+            <div class="portada-score-card" style="border-left-color: var(--red);max-width:200px;">
+                <div class="ps-score c-red">1.2<span style="font-size:0.9rem;color:var(--g300)">/5</span></div>
+                <div class="ps-label">Distribucion y Logistica</div>
+            </div>
+            <div class="portada-score-card" style="border-left-color: var(--g200);max-width:200px;">
+                <div class="ps-score" style="color:var(--g300);">--<span style="font-size:0.9rem;color:var(--g300)">/5</span></div>
+                <div class="ps-label">Control Interno</div>
+                <div style="font-size:0.6rem;color:var(--g300);margin-top:2px;">Pendiente</div>
+            </div>
+            <div class="portada-score-card" style="border-left-color: var(--g200);max-width:200px;">
+                <div class="ps-score" style="color:var(--g300);">--<span style="font-size:0.9rem;color:var(--g300)">/5</span></div>
+                <div class="ps-label">Sistemas (TI)</div>
+                <div style="font-size:0.6rem;color:var(--g300);margin-top:2px;">Pendiente</div>
             </div>
         </div>
 
-        <!-- Bar chart -->
-        <div style="margin: 2rem 0;">
-            <div class="bar-chart-row">
-                <div class="bar-label">01. Modelo Operativo & Lineas</div>
-                <div class="bar-track">
-                    <div class="bar-fill bg-red" style="width:24%;">1.2</div>
-                </div>
-                <div class="bar-value c-red">1.2</div>
-            </div>
-            <div class="bar-chart-row">
-                <div class="bar-label">02. Oportunidad de Contrato</div>
-                <div class="bar-track">
-                    <div class="bar-fill bg-orange" style="width:36%;">1.8</div>
-                </div>
-                <div class="bar-value c-orange">1.8</div>
-            </div>
-            <div class="bar-chart-row">
-                <div class="bar-label">03. Comercializacion & Pipeline</div>
-                <div class="bar-track">
-                    <div class="bar-fill bg-red" style="width:28%;">1.4</div>
-                </div>
-                <div class="bar-value c-red">1.4</div>
-            </div>
-            <div class="bar-chart-row">
-                <div class="bar-label">04. Programacion y Ejecucion OTs</div>
-                <div class="bar-track">
-                    <div class="bar-fill bg-red" style="width:28%;">1.4</div>
-                </div>
-                <div class="bar-value c-red">1.4</div>
-            </div>
-            <div class="bar-chart-row">
-                <div class="bar-label">05. Calidad & Confiabilidad</div>
-                <div class="bar-track">
-                    <div class="bar-fill bg-orange" style="width:36%;">1.8</div>
-                </div>
-                <div class="bar-value c-orange">1.8</div>
-            </div>
-            <div style="border-top:2px solid var(--g100);margin:1.5rem 0 1rem;padding-top:0.5rem;">
-                <div style="font-family:'Montserrat',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--g300);margin-bottom:0.8rem;">Diagnostico Macro</div>
-            </div>
-            <div class="bar-chart-row">
-                <div class="bar-label">TBX &mdash; Contenedores & Consumibles</div>
-                <div class="bar-track">
-                    <div class="bar-fill bg-gold" style="width:46%;">2.3</div>
-                </div>
-                <div class="bar-value c-gold">2.3</div>
-            </div>
-            <div class="bar-chart-row">
-                <div class="bar-label">Balanceo de Personal</div>
-                <div class="bar-track">
-                    <div class="bar-fill bg-red" style="width:28%;">1.4</div>
-                </div>
-                <div class="bar-value c-red">1.4</div>
-            </div>
-            <div class="bar-chart-row">
-                <div class="bar-label">Distribucion & Red Logistica</div>
-                <div class="bar-track">
-                    <div class="bar-fill bg-red" style="width:24%;">1.2</div>
-                </div>
-                <div class="bar-value c-red">1.2</div>
-            </div>
-        </div>
-
-        <div style="max-width:800px;margin-top:2rem;font-size:0.9rem;color:var(--g500);line-height:1.85;">
-            El diagnostico revela una organizacion con capacidades tecnicas demostradas &mdash; NPT de 5.9%, participacion de mercado lider en ECS y BDL, y un equipo experimentado &mdash; pero con procesos operativos insuficientes para capitalizar esas fortalezas. La madurez promedio de 1.6/5 indica que la mayoria de los procesos criticos estan en nivel "Inicial" o "Inexistente": la programacion no gobierna la ejecucion (24% asertividad), $24.8M de trabajo ejecutado no se ha convertido en estimacion, el inventario excedente supera los $10M, y el costo financiero ($1.95M) consume el margen que genera la operacion. La brecha no es de mercado ni de capacidad tecnica &mdash; es de modelo operativo.
+        <div style="max-width:900px;font-size:0.9rem;color:var(--g500);line-height:1.85;">
+            A continuacion se presenta el resumen ejecutivo de cada area, seguido del desarrollo a profundidad de Operaciones 601 (Ejes 01&ndash;05). Las demas areas se iran desarrollando en las proximas semanas.
         </div>
     </div>
 </div>
 
+<!-- ========================================== -->
+<!-- MACRO: OPERACIONES (601 & TBX) VISTA MACRO -->
+<!-- ========================================== -->
+<div class="slide" id="macro-operaciones">
+    <div class="slide-inner">
+        <div style="font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:0.6rem;">Vista Macro</div>
+        <h2 style="font-size:2rem;font-weight:900;margin-bottom:0.5rem;">Operaciones (601 & TBX)</h2>
+        <div style="display:inline-flex;align-items:baseline;gap:0.5rem;margin-bottom:2rem;">
+            <span style="font-family:'Montserrat',sans-serif;font-size:2.5rem;font-weight:900;color:var(--red);">1.7</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:1rem;color:var(--g300);">/5</span>
+        </div>
+
+        <div class="portada-scores" style="justify-content:flex-start;max-width:100%;margin-bottom:2.5rem;">
+            <div class="portada-score-card" style="border-left-color: var(--red);max-width:180px;">
+                <div class="ps-score c-red" style="font-size:1.4rem;">53%</div>
+                <div class="ps-label">Cumplimiento venta</div>
+            </div>
+            <div class="portada-score-card" style="border-left-color: var(--red);max-width:180px;">
+                <div class="ps-score c-red" style="font-size:1.4rem;">-6.8%</div>
+                <div class="ps-label">EBITDA Talleres</div>
+            </div>
+            <div class="portada-score-card" style="border-left-color: var(--red);max-width:180px;">
+                <div class="ps-score c-red" style="font-size:1.4rem;">$24.8M</div>
+                <div class="ps-label">Sin estimar</div>
+            </div>
+            <div class="portada-score-card" style="border-left-color: var(--red);max-width:180px;">
+                <div class="ps-score c-red" style="font-size:1.4rem;">76%</div>
+                <div class="ps-label">OTs reactivas</div>
+            </div>
+            <div class="portada-score-card" style="border-left-color: var(--orange);max-width:180px;">
+                <div class="ps-score c-orange" style="font-size:1.4rem;">2.8/5</div>
+                <div class="ps-label">Adopcion Gestioo</div>
+            </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2rem;">
+            <div style="background:var(--off);border:1px solid var(--g100);border-radius:var(--radius);padding:1.5rem;">
+                <div style="font-family:'Montserrat',sans-serif;font-size:0.85rem;font-weight:800;color:var(--g800);margin-bottom:0.5rem;">601 Talleres</div>
+                <div style="font-size:0.82rem;color:var(--g500);line-height:1.6;">5 ejes evaluados, 32 oportunidades identificadas, madurez promedio <strong style="color:var(--red);">1.5/5</strong>. Desarrollo completo a continuacion.</div>
+            </div>
+            <div style="background:var(--off);border:1px solid var(--g100);border-radius:var(--radius);padding:1.5rem;">
+                <div style="font-family:'Montserrat',sans-serif;font-size:0.85rem;font-weight:800;color:var(--g800);margin-bottom:0.5rem;">TBX</div>
+                <div style="font-size:0.82rem;color:var(--g500);line-height:1.6;">3 oportunidades identificadas, madurez promedio <strong style="color:var(--gold);">2.3/5</strong>. 41 BDs activos, $2,799K/mes (82% ppto).</div>
+            </div>
+        </div>
+
+        <div style="font-size:0.85rem;color:var(--blue);font-weight:600;">Ver desarrollo completo del 601 a continuacion &darr;</div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- MACRO: BALANCEO DE PERSONAL VISTA MACRO    -->
+<!-- ========================================== -->
+<div class="slide alt" id="macro-balanceo">
+    <div class="slide-inner">
+        <div style="font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:0.6rem;">Vista Macro</div>
+        <h2 style="font-size:2rem;font-weight:900;margin-bottom:0.5rem;">Balanceo de Personal</h2>
+        <div style="display:inline-flex;align-items:baseline;gap:0.5rem;margin-bottom:2rem;">
+            <span style="font-family:'Montserrat',sans-serif;font-size:2.5rem;font-weight:900;color:var(--red);">1.4</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:1rem;color:var(--g300);">/5</span>
+        </div>
+
+        <div class="portada-scores" style="justify-content:flex-start;max-width:100%;margin-bottom:2rem;">
+            <div class="portada-score-card" style="border-left-color: var(--red);max-width:180px;">
+                <div class="ps-score c-red" style="font-size:1.4rem;">242</div>
+                <div class="ps-label">HC operativo</div>
+            </div>
+            <div class="portada-score-card" style="border-left-color: var(--red);max-width:180px;">
+                <div class="ps-score c-red" style="font-size:1.4rem;">-$2K</div>
+                <div class="ps-label">EBITDA/HC</div>
+            </div>
+            <div class="portada-score-card" style="border-left-color: var(--red);max-width:180px;">
+                <div class="ps-score c-red" style="font-size:1.4rem;">25%</div>
+                <div class="ps-label">Nomina / Venta</div>
+            </div>
+            <div class="portada-score-card" style="border-left-color: var(--red);max-width:180px;">
+                <div class="ps-score c-red" style="font-size:1.4rem;">71%</div>
+                <div class="ps-label">BDL Nomina/Venta</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom:1.5rem;">
+            <div style="font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--g400);margin-bottom:0.8rem;">Hallazgos Clave</div>
+            <ul style="list-style:none;padding:0;">
+                <li style="font-size:0.85rem;color:var(--g500);padding:0.4rem 0 0.4rem 1.2rem;position:relative;line-height:1.6;border-bottom:1px solid var(--g100);"><span style="position:absolute;left:0;top:0.7rem;width:6px;height:6px;border-radius:50%;background:var(--red);"></span><strong style="color:var(--g700);">Ratios sin vincular:</strong> HC/equipo existen en organigrama pero no estan atados al P&L. BDL $10K venta/HC vs ECS $30K &mdash; 3x diferencia sin correccion.</li>
+                <li style="font-size:0.85rem;color:var(--g500);padding:0.4rem 0 0.4rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;top:0.7rem;width:6px;height:6px;border-radius:50%;background:var(--red);"></span><strong style="color:var(--g700);">Cuadrilla SWAT inexistente:</strong> Cada linea tiene cuadrilla fija. Capacidad ociosa + subcontrato simultaneo (+112%). Potencial reduccion 30-40% HC mantenimiento.</li>
+            </ul>
+        </div>
+
+        <div style="display:inline-flex;align-items:center;padding:6px 16px;border-radius:50px;font-size:0.72rem;font-weight:700;background:var(--gold-light);color:var(--gold);border:1px solid rgba(176,120,0,0.15);">Desarrollo detallado: en construccion</div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- MACRO: DISTRIBUCION Y LOGISTICA VISTA MACRO-->
+<!-- ========================================== -->
+<div class="slide" id="macro-distribucion">
+    <div class="slide-inner">
+        <div style="font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:0.6rem;">Vista Macro</div>
+        <h2 style="font-size:2rem;font-weight:900;margin-bottom:0.5rem;">Distribucion y Logistica</h2>
+        <div style="display:inline-flex;align-items:baseline;gap:0.5rem;margin-bottom:2rem;">
+            <span style="font-family:'Montserrat',sans-serif;font-size:2.5rem;font-weight:900;color:var(--red);">1.2</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:1rem;color:var(--g300);">/5</span>
+        </div>
+
+        <div class="portada-scores" style="justify-content:flex-start;max-width:100%;margin-bottom:2rem;">
+            <div class="portada-score-card" style="border-left-color: var(--red);max-width:180px;">
+                <div class="ps-score c-red" style="font-size:1.4rem;">6</div>
+                <div class="ps-label">Ubicaciones</div>
+            </div>
+            <div class="portada-score-card" style="border-left-color: var(--red);max-width:180px;">
+                <div class="ps-score c-red" style="font-size:1.4rem;">0%</div>
+                <div class="ps-label">S&OP</div>
+            </div>
+            <div class="portada-score-card" style="border-left-color: var(--red);max-width:180px;">
+                <div class="ps-score c-red" style="font-size:1.4rem;">--</div>
+                <div class="ps-label">Modelo formal</div>
+                <div style="font-size:0.6rem;color:var(--g300);margin-top:2px;">Sin modelo</div>
+            </div>
+            <div class="portada-score-card" style="border-left-color: var(--red);max-width:180px;">
+                <div class="ps-score c-red" style="font-size:1.4rem;">--</div>
+                <div class="ps-label">Costos/m&sup2;</div>
+                <div style="font-size:0.6rem;color:var(--g300);margin-top:2px;">Sin medicion</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom:1.5rem;">
+            <div style="font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--g400);margin-bottom:0.8rem;">Hallazgos Clave</div>
+            <ul style="list-style:none;padding:0;">
+                <li style="font-size:0.85rem;color:var(--g500);padding:0.4rem 0 0.4rem 1.2rem;position:relative;line-height:1.6;border-bottom:1px solid var(--g100);"><span style="position:absolute;left:0;top:0.7rem;width:6px;height:6px;border-radius:50%;background:var(--red);"></span><strong style="color:var(--g700);">Modelo de distribucion:</strong> No hay modelo formal. 6 ubicaciones con logistica reactiva. Sin consolidacion de envios entre lineas.</li>
+                <li style="font-size:0.85rem;color:var(--g500);padding:0.4rem 0 0.4rem 1.2rem;position:relative;line-height:1.6;border-bottom:1px solid var(--g100);"><span style="position:absolute;left:0;top:0.7rem;width:6px;height:6px;border-radius:50%;background:var(--red);"></span><strong style="color:var(--g700);">S&OP inexistente:</strong> Se compra sin forecast, se contrata sin carga de trabajo, se financia sin visibilidad. 3 modulos Gestioo pagados sin usar.</li>
+                <li style="font-size:0.85rem;color:var(--g500);padding:0.4rem 0 0.4rem 1.2rem;position:relative;line-height:1.6;"><span style="position:absolute;left:0;top:0.7rem;width:6px;height:6px;border-radius:50%;background:var(--red);"></span><strong style="color:var(--g700);">Volumetria:</strong> No se mide costo de almacenaje por m&sup2;. Decision de inventario sin dato de costo de posesion.</li>
+            </ul>
+        </div>
+
+        <div style="display:inline-flex;align-items:center;padding:6px 16px;border-radius:50px;font-size:0.72rem;font-weight:700;background:var(--gold-light);color:var(--gold);border:1px solid rgba(176,120,0,0.15);">Desarrollo detallado: en construccion</div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- MACRO: CONTROL INTERNO VISTA MACRO         -->
+<!-- ========================================== -->
+<div class="slide alt" id="macro-control">
+    <div class="slide-inner">
+        <div style="font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--g400);margin-bottom:0.6rem;">Vista Macro</div>
+        <h2 style="font-size:2rem;font-weight:900;margin-bottom:0.5rem;">Control Interno</h2>
+        <div style="display:inline-flex;align-items:baseline;gap:0.5rem;margin-bottom:2rem;">
+            <span style="font-family:'Montserrat',sans-serif;font-size:2.5rem;font-weight:900;color:var(--g300);">Pendiente</span>
+        </div>
+
+        <div style="max-width:800px;font-size:0.9rem;color:var(--g500);line-height:1.85;margin-bottom:2rem;">
+            El diagnostico de control interno se realizara como parte del Pilar 04 del proyecto, evaluando el ciclo financiero completo: Ingresos, CxC, Compras, CxP, Inventarios, Tesoreria, Nomina, Activos Fijos, Cierre Contable. Se utilizara la Matriz de Control Interno disenada en Geminis 01 como base.
+        </div>
+
+        <div style="display:inline-flex;align-items:center;padding:6px 16px;border-radius:50px;font-size:0.72rem;font-weight:700;background:var(--g50);color:var(--g400);border:1px solid var(--g200);">Pendiente &mdash; Semana 3-6 del proyecto</div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- MACRO: SISTEMAS (TI) VISTA MACRO           -->
+<!-- ========================================== -->
+<div class="slide" id="macro-sistemas">
+    <div class="slide-inner">
+        <div style="font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--g400);margin-bottom:0.6rem;">Vista Macro</div>
+        <h2 style="font-size:2rem;font-weight:900;margin-bottom:0.5rem;">Sistemas (TI)</h2>
+        <div style="display:inline-flex;align-items:baseline;gap:0.5rem;margin-bottom:2rem;">
+            <span style="font-family:'Montserrat',sans-serif;font-size:2.5rem;font-weight:900;color:var(--g300);">Pendiente</span>
+        </div>
+
+        <div style="max-width:800px;font-size:0.9rem;color:var(--g500);line-height:1.85;margin-bottom:2rem;">
+            Se evaluara el nivel de aprovechamiento de los sistemas existentes (Gestioo, Business Central, Sistema Comercial, TullSystem, Fortia, Power BI), las brechas de integracion y automatizacion, y el rol de TI como habilitador de la disponibilidad, calidad y trazabilidad del dato.
+        </div>
+
+        <div style="display:inline-flex;align-items:center;padding:6px 16px;border-radius:50px;font-size:0.72rem;font-weight:700;background:var(--g50);color:var(--g400);border:1px solid var(--g200);">Pendiente &mdash; Semana 3-6 del proyecto</div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SEPARATOR: DESARROLLO A PROFUNDIDAD 601                      -->
+<!-- ============================================================ -->
+<div class="pilar-header" id="sep-601" style="background:var(--off);">
+    <div class="pilar-header-inner">
+        <div class="pilar-num c-blue">Desarrollo a Profundidad</div>
+        <div class="pilar-title">Operaciones 601</div>
+        <div class="pilar-question">5 Ejes &middot; 32 Oportunidades &middot; Madurez 1.5/5</div>
+
+        <div style="max-width:700px;margin-top:2rem;font-size:0.9rem;color:var(--g500);line-height:1.85;">
+            A continuacion se presenta el diagnostico detallado de cada eje del Contrato 601 (Talleres), con el nivel de madurez, la oportunidad identificada, y la propuesta de proyecto al final de cada eje.
+        </div>
+    </div>
+</div>
 
 <!-- ============================================================ -->
 <!-- EJE 01: MODELO OPERATIVO & LINEAS DE NEGOCIO (1.2/5)        -->
@@ -2714,29 +2851,13 @@
 
 
 <!-- ============================================================ -->
-<!-- MACRO HEADER: DIAGNOSTICO MACRO                              -->
+<!-- SEPARATOR: DESARROLLO POR AREA                               -->
 <!-- ============================================================ -->
-<div class="pilar-header" id="macro" style="background:var(--off);">
+<div class="pilar-header" id="sep-areas" style="background:var(--off);">
     <div class="pilar-header-inner">
-        <div class="pilar-num c-gold">Diagnostico Macro</div>
-        <div class="pilar-title">Mas alla del 601</div>
-        <div class="pilar-question">TBX, Balanceo de Personal, Distribucion y Red Logistica &mdash; areas transversales que impactan todo el modelo operativo.</div>
-        <button class="copy-slide-btn" onclick="copySlide(this)">Copiar slide</button>
-
-        <div style="display:flex;gap:2rem;margin-top:3rem;flex-wrap:wrap;">
-            <div class="portada-score-card" style="border-left-color:var(--gold);flex:1;min-width:220px;max-width:300px;">
-                <div class="ps-score c-gold">2.3<span style="font-size:0.9rem;color:var(--g300)">/5</span></div>
-                <div class="ps-label">TBX &mdash; Contenedores & Consumibles</div>
-            </div>
-            <div class="portada-score-card" style="border-left-color:var(--red);flex:1;min-width:220px;max-width:300px;">
-                <div class="ps-score c-red">1.4<span style="font-size:0.9rem;color:var(--g300)">/5</span></div>
-                <div class="ps-label">Balanceo de Personal</div>
-            </div>
-            <div class="portada-score-card" style="border-left-color:var(--red);flex:1;min-width:220px;max-width:300px;">
-                <div class="ps-score c-red">1.2<span style="font-size:0.9rem;color:var(--g300)">/5</span></div>
-                <div class="ps-label">Distribucion & Red Logistica</div>
-            </div>
-        </div>
+        <div class="pilar-num c-gold">Desarrollo por Area</div>
+        <div class="pilar-title">TBX, Balanceo, Distribucion</div>
+        <div class="pilar-question">En construccion &mdash; se actualizara semanalmente</div>
     </div>
 </div>
 
