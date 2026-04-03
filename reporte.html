@@ -96,6 +96,11 @@
             background: var(--white);
             position: relative;
             page-break-after: always;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin: 2rem auto;
+            max-width: 1200px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
         }
         .slide.alt { background: var(--off); }
         .slide-inner {
@@ -358,6 +363,7 @@
             padding: 4rem 5rem;
             background: var(--white);
             page-break-after: always;
+            position: relative;
         }
         .opp-slide.alt { background: var(--off); }
         .opp-grid {
@@ -523,6 +529,7 @@
             padding: 4rem 5rem;
             background: var(--off);
             page-break-after: always;
+            position: relative;
         }
         .propuesta-inner {
             max-width: 1300px;
@@ -692,6 +699,61 @@
         .dot-blue::before { background: var(--blue) !important; }
         .dot-green::before { background: var(--green) !important; }
 
+        /* ===== SLIDE BORDERS (all slide types) ===== */
+        .opp-slide, .pilar-header, .propuesta-slide, .portada {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin: 2rem auto;
+            max-width: 1200px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+
+        /* ===== EXPORT BUTTON ===== */
+        .export-pptx-btn {
+            position: fixed;
+            top: 58px;
+            right: 14px;
+            z-index: 200;
+            background: var(--blue);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 0.72rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: var(--shadow-md);
+            transition: background 0.2s;
+        }
+        .export-pptx-btn:hover { background: #003d7a; }
+        .export-pptx-btn:disabled { background: var(--g300); cursor: wait; }
+
+        /* ===== COPY SLIDE BUTTON ===== */
+        .copy-slide-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 10;
+            background: var(--white);
+            border: 1px solid var(--g200);
+            border-radius: 5px;
+            padding: 4px 10px;
+            cursor: pointer;
+            font-size: 0.65rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            color: var(--g400);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .copy-slide-btn:hover { border-color: var(--blue); color: var(--blue); }
+        .slide:hover .copy-slide-btn,
+        .opp-slide:hover .copy-slide-btn,
+        .pilar-header:hover .copy-slide-btn,
+        .propuesta-slide:hover .copy-slide-btn,
+        .portada:hover .copy-slide-btn { opacity: 1; }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .slide, .opp-slide, .pilar-header, .propuesta-slide { padding: 3rem 2rem; }
@@ -710,7 +772,7 @@
         }
 
         @media print {
-            .topbar, .toc-btn, .toc-panel, .toc-overlay { display: none; }
+            .topbar, .toc-btn, .toc-panel, .toc-overlay, .export-pptx-btn, .copy-slide-btn { display: none; }
             .slide, .opp-slide, .pilar-header, .propuesta-slide, .portada {
                 min-height: auto;
                 page-break-after: always;
@@ -782,6 +844,9 @@
     <img src="lcg-logo.png" alt="LCG" style="height:24px">
 </div>
 
+<!-- EXPORT BUTTON -->
+<button class="export-pptx-btn" onclick="exportToPptx()">&#128196; Exportar a PowerPoint</button>
+
 <!-- TOC -->
 <button class="toc-btn" onclick="document.querySelector('.toc-panel').classList.add('open');document.querySelector('.toc-overlay').classList.add('show')">&#9776; Indice</button>
 <div class="toc-overlay" onclick="closeToc()"></div>
@@ -806,6 +871,17 @@
     <div class="toc-section">Eje 05</div>
     <a href="#e05" onclick="closeToc()">Calidad & Confiabilidad</a>
     <a href="#e05-p" onclick="closeToc()">Propuesta Eje 05</a>
+    <div class="toc-section">Diagnostico Macro</div>
+    <a href="#macro" onclick="closeToc()">Mas alla del 601</a>
+    <div class="toc-section">TBX</div>
+    <a href="#tbx" onclick="closeToc()">Operaciones TBX</a>
+    <a href="#tbx-p" onclick="closeToc()">Propuesta TBX</a>
+    <div class="toc-section">Balanceo de Personal</div>
+    <a href="#balanceo" onclick="closeToc()">Cuadrillas & Demanda</a>
+    <a href="#balanceo-p" onclick="closeToc()">Propuesta Balanceo</a>
+    <div class="toc-section">Distribucion</div>
+    <a href="#distribucion" onclick="closeToc()">Red Logistica</a>
+    <a href="#distribucion-p" onclick="closeToc()">Propuesta Distribucion</a>
     <div class="toc-section">Cierre</div>
     <a href="#siguiente" onclick="closeToc()">Siguiente Paso</a>
 </nav>
@@ -840,6 +916,18 @@
             <div class="ps-score c-orange">1.8<span style="font-size:0.9rem;color:var(--g300)">/5</span></div>
             <div class="ps-label">Eje 05: Calidad & Confiabilidad</div>
         </div>
+        <div class="portada-score-card" style="border-left-color: var(--gold);">
+            <div class="ps-score c-gold">2.3<span style="font-size:0.9rem;color:var(--g300)">/5</span></div>
+            <div class="ps-label">TBX: Contenedores & Consumibles</div>
+        </div>
+        <div class="portada-score-card" style="border-left-color: var(--red);">
+            <div class="ps-score c-red">1.4<span style="font-size:0.9rem;color:var(--g300)">/5</span></div>
+            <div class="ps-label">Balanceo de Personal</div>
+        </div>
+        <div class="portada-score-card" style="border-left-color: var(--red);">
+            <div class="ps-score c-red">1.2<span style="font-size:0.9rem;color:var(--g300)">/5</span></div>
+            <div class="ps-label">Distribucion & Red Logistica</div>
+        </div>
     </div>
 
     <div class="portada-logos">
@@ -860,15 +948,15 @@
 
         <div class="key-numbers">
             <div class="key-number">
-                <div class="kn-val">32</div>
+                <div class="kn-val">39</div>
                 <div class="kn-label">Oportunidades evaluadas</div>
             </div>
             <div class="key-number">
-                <div class="kn-val c-red">1.6<span style="font-size:1.2rem;color:var(--g300)">/5</span></div>
+                <div class="kn-val c-red">1.5<span style="font-size:1.2rem;color:var(--g300)">/5</span></div>
                 <div class="kn-label">Madurez promedio</div>
             </div>
             <div class="key-number">
-                <div class="kn-val">5</div>
+                <div class="kn-val">8</div>
                 <div class="kn-label">Ejes diagnosticados</div>
             </div>
         </div>
@@ -909,6 +997,30 @@
                     <div class="bar-fill bg-orange" style="width:36%;">1.8</div>
                 </div>
                 <div class="bar-value c-orange">1.8</div>
+            </div>
+            <div style="border-top:2px solid var(--g100);margin:1.5rem 0 1rem;padding-top:0.5rem;">
+                <div style="font-family:'Montserrat',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--g300);margin-bottom:0.8rem;">Diagnostico Macro</div>
+            </div>
+            <div class="bar-chart-row">
+                <div class="bar-label">TBX &mdash; Contenedores & Consumibles</div>
+                <div class="bar-track">
+                    <div class="bar-fill bg-gold" style="width:46%;">2.3</div>
+                </div>
+                <div class="bar-value c-gold">2.3</div>
+            </div>
+            <div class="bar-chart-row">
+                <div class="bar-label">Balanceo de Personal</div>
+                <div class="bar-track">
+                    <div class="bar-fill bg-red" style="width:28%;">1.4</div>
+                </div>
+                <div class="bar-value c-red">1.4</div>
+            </div>
+            <div class="bar-chart-row">
+                <div class="bar-label">Distribucion & Red Logistica</div>
+                <div class="bar-track">
+                    <div class="bar-fill bg-red" style="width:24%;">1.2</div>
+                </div>
+                <div class="bar-value c-red">1.2</div>
             </div>
         </div>
 
@@ -2602,6 +2714,609 @@
 
 
 <!-- ============================================================ -->
+<!-- MACRO HEADER: DIAGNOSTICO MACRO                              -->
+<!-- ============================================================ -->
+<div class="pilar-header" id="macro" style="background:var(--off);">
+    <div class="pilar-header-inner">
+        <div class="pilar-num c-gold">Diagnostico Macro</div>
+        <div class="pilar-title">Mas alla del 601</div>
+        <div class="pilar-question">TBX, Balanceo de Personal, Distribucion y Red Logistica &mdash; areas transversales que impactan todo el modelo operativo.</div>
+        <button class="copy-slide-btn" onclick="copySlide(this)">Copiar slide</button>
+
+        <div style="display:flex;gap:2rem;margin-top:3rem;flex-wrap:wrap;">
+            <div class="portada-score-card" style="border-left-color:var(--gold);flex:1;min-width:220px;max-width:300px;">
+                <div class="ps-score c-gold">2.3<span style="font-size:0.9rem;color:var(--g300)">/5</span></div>
+                <div class="ps-label">TBX &mdash; Contenedores & Consumibles</div>
+            </div>
+            <div class="portada-score-card" style="border-left-color:var(--red);flex:1;min-width:220px;max-width:300px;">
+                <div class="ps-score c-red">1.4<span style="font-size:0.9rem;color:var(--g300)">/5</span></div>
+                <div class="ps-label">Balanceo de Personal</div>
+            </div>
+            <div class="portada-score-card" style="border-left-color:var(--red);flex:1;min-width:220px;max-width:300px;">
+                <div class="ps-score c-red">1.2<span style="font-size:0.9rem;color:var(--g300)">/5</span></div>
+                <div class="ps-label">Distribucion & Red Logistica</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- TBX: OPERACIONES TBX (2.3/5)                                 -->
+<!-- ============================================================ -->
+<div class="pilar-header" id="tbx">
+    <div class="pilar-header-inner">
+        <div class="pilar-num c-gold">TBX</div>
+        <div class="pilar-title">Operaciones TBX &mdash;<br>Contenedores & Consumibles</div>
+        <div class="pilar-question">&iquest;Como opera el modelo de rentas + consumibles + inspeccion y como se eficienta?</div>
+        <button class="copy-slide-btn" onclick="copySlide(this)">Copiar slide</button>
+
+        <div class="pilar-flow">
+            <div class="flow-step" style="background:var(--gold-bg);color:var(--gold);">Contrato 802</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--gold-bg);color:var(--gold);">Inv. Consumibles</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--gold-bg);color:var(--gold);">Tipo Contenedor</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--gold-bg);color:var(--gold);">Armado BD</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--gold-bg);color:var(--gold);">Despliegue</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--gold-bg);color:var(--gold);">Operacion</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--gold-bg);color:var(--gold);">Inspeccion MTTO</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--gold-bg);color:var(--gold);">Facturacion</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--gold-bg);color:var(--gold);">Retiro</div>
+        </div>
+
+        <div class="pilar-stats">
+            <div class="pilar-big-score">
+                <div><span class="pbs-val c-gold">2.3</span><span class="pbs-of">/5</span></div>
+                <div class="pbs-label">Madurez del eje</div>
+            </div>
+            <div class="pilar-count">
+                <strong>3</strong>
+                Oportunidades identificadas
+            </div>
+            <div style="display:flex;gap:2rem;flex-wrap:wrap;">
+                <div class="pilar-count"><strong>41</strong> BDs activos</div>
+                <div class="pilar-count"><strong>$2,799K</strong> /mes (82% ppto)</div>
+                <div class="pilar-count"><strong>$384K</strong> EBITDA (32%)</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TBX-OPP1: Inventario de consumibles -->
+<div class="opp-slide alt">
+    <div class="opp-grid">
+        <div class="opp-left">
+            <div class="opp-eje-tag">TBX &middot; Oportunidad 1 de 3</div>
+            <div class="opp-title-row">
+                <h3 class="opp-title">Inventario de consumibles</h3>
+            </div>
+            <div class="opp-tags">
+                <span class="who-tag who-geminis">Geminis 01</span>
+            </div>
+            <div class="opp-content-label">Area de Oportunidad</div>
+            <div class="opp-content">
+                <p><strong>57% del inventario de consumibles tiene +421 dias de antiguedad ($4.2M)</strong>. Costo financiero asociado: $1.4M/ano. No hay plan de liquidacion. No hay clasificacion ABC. Reposicion reactiva.</p>
+                <p><strong>$5.9M de inventario total</strong> donde el 32% genera el 97% de las ventas. El 68% restante es capital muerto envejeciendo sin generar retorno. Sin proceso de revision periodica, sin politica de maximo de stock, sin plan de disposicion de obsoletos.</p>
+                <p>Este inventario lleva mas de un ano acumulandose. Cada mes que pasa sin accion es un mes mas de costo financiero y un mes mas de obsolescencia.</p>
+            </div>
+        </div>
+        <div class="opp-right">
+            <div class="maturity-box">
+                <div class="maturity-header">Nivel de Madurez</div>
+                <div class="maturity-score"><span class="ms-num c-red">1</span><span class="ms-of">/5</span></div>
+                <div class="maturity-bar"><div class="maturity-bar-fill bg-red" style="width:20%"></div></div>
+                <div class="maturity-why-label">Por que 1/5</div>
+                <ul class="maturity-reasons">
+                    <li class="dot-red"><strong>Proceso:</strong> Sin proceso de revision. Sin clasificacion ABC.</li>
+                    <li class="dot-red"><strong>Datos:</strong> Se tiene el dato pero no se usa como herramienta de gestion.</li>
+                    <li class="dot-red"><strong>Gestion:</strong> Sin plan de liquidacion. Sin politica de maximo.</li>
+                    <li class="dot-red"><strong>Resultado:</strong> $4.2M con +421 dias. Capital muerto envejeciendo.</li>
+                    <li class="dot-red"><strong>Impacto:</strong> $1.4M/ano de costo financiero directo.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <button class="copy-slide-btn" onclick="copySlide(this)">Copiar slide</button>
+</div>
+
+<!-- TBX-OPP2: Mantenimiento a contenedores y herramienta -->
+<div class="opp-slide">
+    <div class="opp-grid">
+        <div class="opp-left">
+            <div class="opp-eje-tag">TBX &middot; Oportunidad 2 de 3</div>
+            <div class="opp-title-row">
+                <h3 class="opp-title">Mantenimiento a contenedores y herramienta</h3>
+            </div>
+            <div class="opp-tags">
+                <span class="who-tag who-london">London G02</span>
+            </div>
+            <div class="opp-content-label">Area de Oportunidad</div>
+            <div class="opp-content">
+                <p>Existe programa basico de inspeccion de herramienta (izaje). <strong>Certificaciones SSPA al dia</strong>. Pero no hay plan preventivo estandarizado por tipo de contenedor (BD estandar vs BD especial vs BD equipo).</p>
+                <p>Subgerente de Capacitacion y Mantenimiento existe. TullSystem opera para tracking de movimientos y RAF. Las inspecciones se hacen pero <strong>no estan planificadas sistematicamente</strong> &mdash; dependen de la iniciativa individual, no de un programa formal por tipo de BD.</p>
+                <p>Sin estandarizacion por tipo de contenedor, el mantenimiento es reactivo y la vida util del activo se acorta innecesariamente.</p>
+            </div>
+        </div>
+        <div class="opp-right">
+            <div class="maturity-box">
+                <div class="maturity-header">Nivel de Madurez</div>
+                <div class="maturity-score"><span class="ms-num c-orange">2</span><span class="ms-of">/5</span></div>
+                <div class="maturity-bar"><div class="maturity-bar-fill bg-orange" style="width:40%"></div></div>
+                <div class="maturity-why-label">Por que 2/5</div>
+                <ul class="maturity-reasons">
+                    <li class="dot-orange"><strong>Proceso:</strong> Parcial. Inspecciones basicas existen pero sin plan por tipo.</li>
+                    <li class="dot-orange"><strong>Datos:</strong> TullSystem tiene datos de movimientos y RAF.</li>
+                    <li class="dot-red"><strong>Gestion:</strong> Falta estandarizacion por tipo de contenedor.</li>
+                    <li class="dot-red"><strong>Resultado:</strong> Mantenimiento reactivo, no planificado sistematicamente.</li>
+                    <li class="dot-orange"><strong>Impacto:</strong> Vida util del activo se acorta por falta de preventivo formal.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <button class="copy-slide-btn" onclick="copySlide(this)">Copiar slide</button>
+</div>
+
+<!-- TBX-OPP3: Integracion TullSystem <-> BC -->
+<div class="opp-slide alt">
+    <div class="opp-grid">
+        <div class="opp-left">
+            <div class="opp-eje-tag">TBX &middot; Oportunidad 3 de 3</div>
+            <div class="opp-title-row">
+                <h3 class="opp-title">Integracion TullSystem &harr; Business Central</h3>
+            </div>
+            <div class="opp-tags">
+                <span class="who-tag who-london">London G02</span>
+            </div>
+            <div class="opp-content-label">Area de Oportunidad</div>
+            <div class="opp-content">
+                <p>TullSystem opera para BDs, movimientos, reposicion, RAF. Pero <strong>NO esta integrado con Business Central</strong>. El costeo y facturacion es manual entre sistemas.</p>
+                <p>Esto genera <strong>demoras, errores de captura, y falta de visibilidad en P&L en tiempo real</strong>. El equipo de finanzas no puede ver el margen de TBX hasta que se cruzan manualmente los datos de ambos sistemas.</p>
+                <p>La desconexion entre sistemas es la raiz de la falta de visibilidad financiera en TBX. Sin integracion, cada cierre mensual requiere reconciliacion manual que consume tiempo y genera errores.</p>
+            </div>
+        </div>
+        <div class="opp-right">
+            <div class="maturity-box">
+                <div class="maturity-header">Nivel de Madurez</div>
+                <div class="maturity-score"><span class="ms-num c-red">1</span><span class="ms-of">/5</span></div>
+                <div class="maturity-bar"><div class="maturity-bar-fill bg-red" style="width:20%"></div></div>
+                <div class="maturity-why-label">Por que 1/5</div>
+                <ul class="maturity-reasons">
+                    <li class="dot-red"><strong>Proceso:</strong> Sistemas desconectados. Proceso manual entre TullSystem y BC.</li>
+                    <li class="dot-red"><strong>Datos:</strong> Sin costeo automatico. Datos duplicados entre sistemas.</li>
+                    <li class="dot-red"><strong>Gestion:</strong> Reconciliacion manual cada cierre mensual.</li>
+                    <li class="dot-red"><strong>Resultado:</strong> Sin visibilidad P&L en tiempo real para TBX.</li>
+                    <li class="dot-red"><strong>Impacto:</strong> Errores de captura, demoras en cierre, margen invisible.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <button class="copy-slide-btn" onclick="copySlide(this)">Copiar slide</button>
+</div>
+
+<!-- TBX PROPUESTA -->
+<div class="propuesta-slide" id="tbx-p">
+    <div class="propuesta-inner">
+        <div style="font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">Propuesta de Proyecto</div>
+        <div class="propuesta-title">TBX: Operaciones de Contenedores & Consumibles</div>
+        <button class="copy-slide-btn" onclick="copySlide(this)">Copiar slide</button>
+
+        <div class="modelo-grid">
+            <div class="modelo-card">
+                <h4>Modelo operativo estandarizado por linea (aplicado a TBX)</h4>
+                <div class="modelo-section-label">Que es</div>
+                <div class="modelo-text">Plantilla maestra para operacion de contenedores &mdash; tipos de BD, configuracion por servicio, armado, despliegue, inspeccion. Estandarizacion del proceso de mantenimiento por tipo de contenedor.</div>
+                <div class="modelo-section-label">Entregables</div>
+                <ul>
+                    <li>Catalogo de configuraciones estandar por tipo de BD</li>
+                    <li>Plan de mantenimiento preventivo por tipo de BD</li>
+                    <li>Proceso estandarizado de inspeccion y despliegue</li>
+                </ul>
+                <div class="modelo-section-label">Indicadores de exito</div>
+                <div class="modelo-kpi">% BDs con plan preventivo: <span>0%</span> &rarr; <em>100%</em></div>
+                <div style="margin-top:0.8rem;"><span class="who-tag who-london">London G02</span></div>
+            </div>
+
+            <div class="modelo-card">
+                <h4>Modelo de disponibilidad de refacciones criticas y S&OP (consumibles TBX)</h4>
+                <div class="modelo-section-label">Que es</div>
+                <div class="modelo-text">Clasificacion ABC de consumibles, plan de liquidacion de obsoletos ($4.2M), definicion de min/max por tipo, y S&OP especifico para TBX.</div>
+                <div class="modelo-section-label">Entregables</div>
+                <ul>
+                    <li>Clasificacion ABC de consumibles</li>
+                    <li>Plan de liquidacion de obsoletos (+421 dias)</li>
+                    <li>S&OP TBX con forecast de demanda</li>
+                </ul>
+                <div class="modelo-section-label">Indicadores de exito</div>
+                <div class="modelo-kpi">Inventario +180 dias: <span>57%</span> &rarr; <em>&lt;10%</em></div>
+                <div class="modelo-kpi">Rotacion inventario: <span>&lt;1x</span> &rarr; <em>&gt;4x</em></div>
+                <div style="margin-top:0.8rem;"><span class="who-tag who-geminis">Geminis 01</span></div>
+            </div>
+        </div>
+
+        <div class="ref-callout">
+            <strong>Referencia:</strong> TBX opera con 41 BDs activos de 78 en existencia (53% utilizacion). El modelo de rentas es estable ($1,456K/mes, +5% vs ppto) pero los consumibles arrastran un inventario envejecido que consume capital. La integracion TullSystem-BC es prerequisito para visibilidad P&L en tiempo real.
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- BALANCEO DE PERSONAL (1.4/5)                                  -->
+<!-- ============================================================ -->
+<div class="pilar-header" id="balanceo">
+    <div class="pilar-header-inner">
+        <div class="pilar-num c-red">Balanceo</div>
+        <div class="pilar-title">Balanceo de Personal &mdash;<br>Cuadrillas alineadas a la demanda</div>
+        <div class="pilar-question">&iquest;Tengo la gente correcta, en el lugar correcto, al costo correcto?</div>
+        <button class="copy-slide-btn" onclick="copySlide(this)">Copiar slide</button>
+
+        <div class="pilar-flow">
+            <div class="flow-step" style="background:var(--red-bg);color:var(--red);">Demanda (OT)</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--red-bg);color:var(--red);">Capacidad</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--red-bg);color:var(--red);">Asignacion/Turnos</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--red-bg);color:var(--red);">Ejecucion</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--red-bg);color:var(--red);">Medicion</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--red-bg);color:var(--red);">Ajuste</div>
+        </div>
+
+        <div class="pilar-stats">
+            <div class="pilar-big-score">
+                <div><span class="pbs-val c-red">1.4</span><span class="pbs-of">/5</span></div>
+                <div class="pbs-label">Madurez del eje</div>
+            </div>
+            <div class="pilar-count">
+                <strong>2</strong>
+                Oportunidades identificadas
+            </div>
+            <div style="display:flex;gap:2rem;flex-wrap:wrap;">
+                <div class="pilar-count"><strong>242</strong> HC operativo</div>
+                <div class="pilar-count"><strong>-$2K</strong> EBITDA/HC (meta +$8-12K)</div>
+                <div class="pilar-count"><strong>25%</strong> Nomina/Venta</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- BAL-OPP1: Ratios HC/equipo sin vinculacion a facturacion -->
+<div class="opp-slide alt">
+    <div class="opp-grid">
+        <div class="opp-left">
+            <div class="opp-eje-tag">Balanceo &middot; Oportunidad 1 de 2</div>
+            <div class="opp-title-row">
+                <h3 class="opp-title">Ratios HC/equipo sin vinculacion a facturacion</h3>
+                <span class="opp-star">&#9733; Prioridad cliente</span>
+            </div>
+            <div class="opp-tags">
+                <span class="who-tag who-london">London G02</span>
+            </div>
+            <div class="opp-content-label">Area de Oportunidad</div>
+            <div class="opp-content">
+                <p>Ratios existen en organigrama (TD 5.25, ECS 8.1, BDL 4.45, BOP 0.35, KK 1.75) pero <strong>la peticion de personal se fundamenta en el requerimiento del cliente, no en un modelo de costeo atado a venta o facturacion</strong>.</p>
+                <p><strong>BDL</strong>: 89 HC generando $10K de venta por persona y costando $7K de nomina &mdash; solo quedan $3K para todo lo demas (refacciones, vehiculos, G&A, financiamiento). <strong>ECS</strong>: 113 HC generando $30K por persona. Misma industria, <strong>3x de diferencia</strong>.</p>
+                <p>Hubo reestructura empujada por DG y Capital Humano, pero sin modelo de costeo no se sabe si fue suficiente ni donde cortar mas. Sin rulebook, sin validacion contra venta.</p>
+            </div>
+        </div>
+        <div class="opp-right">
+            <div class="maturity-box">
+                <div class="maturity-header">Nivel de Madurez</div>
+                <div class="maturity-score"><span class="ms-num c-red">1.5</span><span class="ms-of">/5</span></div>
+                <div class="maturity-bar"><div class="maturity-bar-fill bg-red" style="width:30%"></div></div>
+                <div class="maturity-why-label">Por que 1.5/5</div>
+                <ul class="maturity-reasons">
+                    <li class="dot-red"><strong>Proceso:</strong> Ratios existen en papel. No atados a P&L.</li>
+                    <li class="dot-red"><strong>Datos:</strong> Sin modelo de costeo. Sin validacion contra venta.</li>
+                    <li class="dot-red"><strong>Gestion:</strong> Sin rulebook operativo. Peticion por requerimiento, no por modelo.</li>
+                    <li class="dot-red"><strong>Resultado:</strong> BDL $10K venta/HC vs ECS $30K &mdash; 3x diferencia sin correccion.</li>
+                    <li class="dot-red"><strong>Impacto:</strong> EBITDA/HC -$2K vs meta +$8K. Nomina 25% de venta.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <button class="copy-slide-btn" onclick="copySlide(this)">Copiar slide</button>
+</div>
+
+<!-- BAL-OPP2: Cuadrilla SWAT y tiempo improductivo -->
+<div class="opp-slide">
+    <div class="opp-grid">
+        <div class="opp-left">
+            <div class="opp-eje-tag">Balanceo &middot; Oportunidad 2 de 2</div>
+            <div class="opp-title-row">
+                <h3 class="opp-title">Cuadrilla SWAT y tiempo improductivo</h3>
+                <span class="opp-star">&#9733; Prioridad cliente</span>
+            </div>
+            <div class="opp-tags">
+                <span class="who-tag who-london">London G02</span>
+            </div>
+            <div class="opp-content-label">Area de Oportunidad</div>
+            <div class="opp-content">
+                <p><strong>No existe pool compartido entre lineas.</strong> Cada linea tiene su propia cuadrilla fija de mantenimiento. Un soldador de BDL no atiende trabajo de ECS aunque este libre. Un mecanico de TD no apoya BOP.</p>
+                <p>Genera <strong>capacidad ociosa en valles y overhead duplicado</strong>. No se mide tiempo efectivo vs improductivo. Reduccion estimada: <strong>30-40% del HC de mantenimiento</strong> sin afectar capacidad de respuesta.</p>
+                <p>Subcontrato BDL <strong>+112% vs presupuesto</strong> ($379K vs $179K) &mdash; si hay gente ociosa de otras lineas, &iquest;por que se subcontrata? El problema es de silos, no de capacidad total.</p>
+            </div>
+        </div>
+        <div class="opp-right">
+            <div class="maturity-box">
+                <div class="maturity-header">Nivel de Madurez</div>
+                <div class="maturity-score"><span class="ms-num c-red">1</span><span class="ms-of">/5</span></div>
+                <div class="maturity-bar"><div class="maturity-bar-fill bg-red" style="width:20%"></div></div>
+                <div class="maturity-why-label">Por que 1/5</div>
+                <ul class="maturity-reasons">
+                    <li class="dot-red"><strong>Proceso:</strong> Inexistente. Silos de HC por linea sin pool compartido.</li>
+                    <li class="dot-red"><strong>Datos:</strong> Sin medicion de tiempo efectivo vs improductivo.</li>
+                    <li class="dot-red"><strong>Gestion:</strong> Cada linea contrata y retiene independientemente.</li>
+                    <li class="dot-red"><strong>Resultado:</strong> Capacidad ociosa + subcontrato simultaneo (+112%).</li>
+                    <li class="dot-red"><strong>Impacto:</strong> 30-40% del HC de mantenimiento potencialmente reducible.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <button class="copy-slide-btn" onclick="copySlide(this)">Copiar slide</button>
+</div>
+
+<!-- BALANCEO PROPUESTA -->
+<div class="propuesta-slide" id="balanceo-p">
+    <div class="propuesta-inner">
+        <div style="font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem;">Propuesta de Proyecto</div>
+        <div class="propuesta-title">Balanceo de Personal: Cuadrillas alineadas a la demanda</div>
+        <button class="copy-slide-btn" onclick="copySlide(this)">Copiar slide</button>
+
+        <div class="modelo-grid">
+            <div class="modelo-card">
+                <h4>Modelo de capacidad y balance de personal</h4>
+                <div class="modelo-section-label">Que es</div>
+                <div class="modelo-text">Cuantas cuadrillas y especialistas por linea vs demanda real. Modelo parametrico que escala con la demanda. Ratios validados contra P&L por linea.</div>
+                <div class="modelo-section-label">Entregables</div>
+                <ul>
+                    <li>Ratios HC/equipo validados por linea contra facturacion</li>
+                    <li>Modelo demanda vs capacidad parametrico</li>
+                    <li>Rulebook operativo de dimensionamiento</li>
+                </ul>
+                <div class="modelo-section-label">Indicadores de exito</div>
+                <div class="modelo-kpi">Nomina/Venta: <span>25%</span> &rarr; <em>&lt;18%</em></div>
+                <div class="modelo-kpi">EBITDA/HC: <span>-$2K</span> &rarr; <em>+$8K</em></div>
+                <div style="margin-top:0.8rem;"><span class="who-tag who-london">London G02</span></div>
+            </div>
+
+            <div class="modelo-card">
+                <h4>Modelo de Cuadrilla de Servicios (SWAT)</h4>
+                <div class="modelo-section-label">Que es</div>
+                <div class="modelo-text">Pool regional de especialistas compartidos entre lineas con certificacion cruzada y asignacion dinamica. Cuadrillas multidisciplinarias que se mueven entre estructuras (ECS&harr;KK&harr;BOP&harr;BDL) sin incrementar costo.</div>
+                <div class="modelo-section-label">Entregables</div>
+                <ul>
+                    <li>Diseno de cuadrilla SWAT regional</li>
+                    <li>Piloto en una region con 2+ lineas</li>
+                    <li>Protocolo de asignacion dinamica en Gestioo</li>
+                </ul>
+                <div class="modelo-section-label">Indicadores de exito</div>
+                <div class="modelo-kpi">HC mantenimiento: <span>Actual</span> &rarr; <em>-30-40%</em></div>
+                <div class="modelo-kpi">Subcontrato controlado: <span>+112% vs ppto</span> &rarr; <em>&lt;10% vs ppto</em></div>
+                <div style="margin-top:0.8rem;"><span class="who-tag who-london">London G02</span></div>
+            </div>
+        </div>
+
+        <div class="ref-callout">
+            <strong>Referencia de industria:</strong> Empresas OFS de referencia operan con cuadrillas multiskill asignadas por coordinador regional, no por linea. El ratio tipico de nomina/venta en servicios petroleros es 12-18%. El modelo de pool compartido reduce HC de mantenimiento 25-40% sin afectar SLAs.
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- DISTRIBUCION Y RED LOGISTICA (1.2/5)                          -->
+<!-- ============================================================ -->
+<div class="pilar-header" id="distribucion">
+    <div class="pilar-header-inner">
+        <div class="pilar-num c-red">Distribucion</div>
+        <div class="pilar-title">Distribucion y<br>Red Logistica</div>
+        <div class="pilar-question">&iquest;El material correcto llega al lugar correcto en el tiempo correcto al costo correcto?</div>
+        <button class="copy-slide-btn" onclick="copySlide(this)">Copiar slide</button>
+
+        <div class="pilar-flow">
+            <div class="flow-step" style="background:var(--red-bg);color:var(--red);">Modelo Dist.</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--red-bg);color:var(--red);">Rutas y Tiempos</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--red-bg);color:var(--red);">Costos Logisticos</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--red-bg);color:var(--red);">Niveles Servicio</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--red-bg);color:var(--red);">S&OP</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step" style="background:var(--red-bg);color:var(--red);">Volumetria</div>
+        </div>
+
+        <div class="pilar-stats">
+            <div class="pilar-big-score">
+                <div><span class="pbs-val c-red">1.2</span><span class="pbs-of">/5</span></div>
+                <div class="pbs-label">Madurez del eje</div>
+            </div>
+            <div class="pilar-count">
+                <strong>3</strong>
+                Oportunidades identificadas
+            </div>
+            <div class="pilar-count">
+                <strong>6</strong>
+                Ubicaciones (Tampico, VHSA, Paraiso, Carmen, Poza Rica, Reynosa)
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DIST-OPP1: Modelo de distribucion y logistica -->
+<div class="opp-slide alt">
+    <div class="opp-grid">
+        <div class="opp-left">
+            <div class="opp-eje-tag">Distribucion &middot; Oportunidad 1 de 3</div>
+            <div class="opp-title-row">
+                <h3 class="opp-title">Modelo de distribucion y logistica</h3>
+                <span class="opp-star">&#9733; Prioridad cliente</span>
+            </div>
+            <div class="opp-tags">
+                <span class="who-tag who-geminis">Geminis 01</span>
+            </div>
+            <div class="opp-content-label">Area de Oportunidad</div>
+            <div class="opp-content">
+                <p><strong>No hay modelo formal de distribucion.</strong> 6 ubicaciones operando con logistica reactiva. Vehiculos asignados por linea sin optimizacion.</p>
+                <p>No se miden eficiencias en ruta (km, tiempos, costos logisticos). Sin analisis de costo por entrega ni niveles de servicio al cliente interno. La operacion <strong>terrestre y marina tienen dinamicas muy diferentes</strong> pero se gestionan con el mismo (in)proceso.</p>
+                <p>Cada linea gestiona su propia logistica de forma independiente &mdash; mismos destinos, mismas rutas, pero sin coordinacion ni consolidacion de envios.</p>
+            </div>
+        </div>
+        <div class="opp-right">
+            <div class="maturity-box">
+                <div class="maturity-header">Nivel de Madurez</div>
+                <div class="maturity-score"><span class="ms-num c-red">1.5</span><span class="ms-of">/5</span></div>
+                <div class="maturity-bar"><div class="maturity-bar-fill bg-red" style="width:30%"></div></div>
+                <div class="maturity-why-label">Por que 1.5/5</div>
+                <ul class="maturity-reasons">
+                    <li class="dot-red"><strong>Proceso:</strong> Sin modelo formal. Logistica reactiva.</li>
+                    <li class="dot-red"><strong>Datos:</strong> Sin medicion de km, tiempos, costos por ruta.</li>
+                    <li class="dot-red"><strong>Gestion:</strong> Vehiculos por linea sin optimizacion.</li>
+                    <li class="dot-red"><strong>Resultado:</strong> 6 ubicaciones sin coordinacion logistica.</li>
+                    <li class="dot-red"><strong>Impacto:</strong> Costos logisticos invisibles. Sin consolidacion de envios.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <button class="copy-slide-btn" onclick="copySlide(this)">Copiar slide</button>
+</div>
+
+<!-- DIST-OPP2: S&OP y disponibilidad de informacion -->
+<div class="opp-slide">
+    <div class="opp-grid">
+        <div class="opp-left">
+            <div class="opp-eje-tag">Distribucion &middot; Oportunidad 2 de 3</div>
+            <div class="opp-title-row">
+                <h3 class="opp-title">S&OP y disponibilidad de informacion</h3>
+                <span class="opp-star">&#9733; Prioridad cliente</span>
+            </div>
+            <div class="opp-tags">
+                <span class="who-tag who-geminis">Geminis 01</span>
+            </div>
+            <div class="opp-content-label">Area de Oportunidad</div>
+            <div class="opp-content">
+                <p><strong>S&OP no existe (0%).</strong> No hay sesion formal que integre demanda (OTs programadas) + capacidad (HC + inventario) + prioridades (margen por OT). Datos dispersos entre Gestioo, BC, Sistema Comercial, TullSystem &mdash; sin fuente unica.</p>
+                <p>Consecuencias directas: se compra sin forecast (<strong>inventario excedente $5.1M en BDL</strong>), se contrata sin carga de trabajo (<strong>HC sobredimensionado en 4 de 5 lineas</strong>), se financia sin visibilidad (<strong>$1.9M gasto financiero</strong>).</p>
+                <p>Los <strong>3 modulos de Gestioo ya pagados</strong> (MTTO preventivo, Stock MRO, carga tiempo real) son la base del S&OP sin inversion adicional &mdash; solo falta activarlos.</p>
+            </div>
+        </div>
+        <div class="opp-right">
+            <div class="maturity-box">
+                <div class="maturity-header">Nivel de Madurez</div>
+                <div class="maturity-score"><span class="ms-num c-red">1</span><span class="ms-of">/5</span></div>
+                <div class="maturity-bar"><div class="maturity-bar-fill bg-red" style="width:20%"></div></div>
+                <div class="maturity-why-label">Por que 1/5</div>
+                <ul class="maturity-reasons">
+                    <li class="dot-red"><strong>Proceso:</strong> Inexistente. Sin sesion. Sin datos unificados.</li>
+                    <li class="dot-red"><strong>Datos:</strong> Dispersos entre 4+ sistemas sin fuente unica.</li>
+                    <li class="dot-red"><strong>Gestion:</strong> Se compra, contrata y financia sin forecast.</li>
+                    <li class="dot-red"><strong>Resultado:</strong> $5.1M inv. excedente + HC sobre + $1.9M financiamiento.</li>
+                    <li class="dot-red"><strong>Impacto:</strong> 3 modulos Gestioo pagados sin usar = inversion sin retorno.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <button class="copy-slide-btn" onclick="copySlide(this)">Copiar slide</button>
+</div>
+
+<!-- DIST-OPP3: Volumetria y costos de almacenaje -->
+<div class="opp-slide alt">
+    <div class="opp-grid">
+        <div class="opp-left">
+            <div class="opp-eje-tag">Distribucion &middot; Oportunidad 3 de 3</div>
+            <div class="opp-title-row">
+                <h3 class="opp-title">Volumetria y costos de almacenaje</h3>
+                <span class="opp-star">&#9733; Prioridad cliente</span>
+            </div>
+            <div class="opp-tags">
+                <span class="who-tag who-geminis">Geminis 01</span>
+            </div>
+            <div class="opp-content-label">Area de Oportunidad</div>
+            <div class="opp-content">
+                <p><strong>No se mide el costo de almacenaje</strong> por m&sup2;, racks, mano de obra ni merma. No hay analisis de volumetria. No se sabe cuanto cuesta tener un SKU en almacen por mes.</p>
+                <p>Sin esta informacion, no se puede tomar la decision de <strong>liquidar vs mantener inventario</strong> con base en costo real. Un SKU con $50K de valor y $500/mes de almacenaje tiene un horizonte de decision diferente a uno con $5K y $50/mes.</p>
+                <p>La decision de inventario se toma sin dato de costo de posesion. Esto es especialmente critico para BDL ($5.5M, 22.6 meses) y consumibles TBX ($4.2M, +421 dias).</p>
+            </div>
+        </div>
+        <div class="opp-right">
+            <div class="maturity-box">
+                <div class="maturity-header">Nivel de Madurez</div>
+                <div class="maturity-score"><span class="ms-num c-red">1</span><span class="ms-of">/5</span></div>
+                <div class="maturity-bar"><div class="maturity-bar-fill bg-red" style="width:20%"></div></div>
+                <div class="maturity-why-label">Por que 1/5</div>
+                <ul class="maturity-reasons">
+                    <li class="dot-red"><strong>Proceso:</strong> Inexistente. Sin medicion de costo de almacenaje.</li>
+                    <li class="dot-red"><strong>Datos:</strong> Sin analisis de volumetria. Sin costo por m&sup2;.</li>
+                    <li class="dot-red"><strong>Gestion:</strong> Decision de inventario sin dato de costo de posesion.</li>
+                    <li class="dot-red"><strong>Resultado:</strong> BDL $5.5M y TBX $4.2M sin analisis costo-beneficio.</li>
+                    <li class="dot-red"><strong>Impacto:</strong> Capital muerto sin visibilidad de cuanto cuesta mantenerlo.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <button class="copy-slide-btn" onclick="copySlide(this)">Copiar slide</button>
+</div>
+
+<!-- DISTRIBUCION PROPUESTA -->
+<div class="propuesta-slide" id="distribucion-p">
+    <div class="propuesta-inner">
+        <div style="font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem;">Propuesta de Proyecto</div>
+        <div class="propuesta-title">Distribucion y Red Logistica</div>
+        <button class="copy-slide-btn" onclick="copySlide(this)">Copiar slide</button>
+
+        <div class="modelo-grid">
+            <div class="modelo-card">
+                <h4>Modelo de distribucion y logistica</h4>
+                <div class="modelo-section-label">Que es</div>
+                <div class="modelo-text">Modelo formal de rutas, tiempos y costos por ubicacion. Optimizacion de vehiculos y consolidacion de envios entre lineas. SLAs internos Cadena de Suministros a Operaciones.</div>
+                <div class="modelo-section-label">Entregables</div>
+                <ul>
+                    <li>Mapa de rutas optimizado por ubicacion y tipo (terrestre/marina)</li>
+                    <li>Analisis costo por entrega y costo por km</li>
+                    <li>SLAs internos CDS &rarr; Operaciones</li>
+                </ul>
+                <div class="modelo-section-label">Indicadores de exito</div>
+                <div class="modelo-kpi">Costo/km: <span>No se mide</span> &rarr; <em>Medido y optimizado</em></div>
+                <div class="modelo-kpi">Fill rate: <span>No se mide</span> &rarr; <em>&gt;95%</em></div>
+                <div style="margin-top:0.8rem;"><span class="who-tag who-geminis">Geminis 01</span></div>
+            </div>
+
+            <div class="modelo-card">
+                <h4>Modelo de disponibilidad de refacciones criticas y S&OP</h4>
+                <div class="modelo-section-label">Que es</div>
+                <div class="modelo-text">Sesion S&OP mensual integrando demanda (OTs programadas) + capacidad (HC + inventario) + prioridades (margen por OT). Activar los 3 modulos Gestioo ya pagados como base.</div>
+                <div class="modelo-section-label">Entregables</div>
+                <ul>
+                    <li>Formato y rutina S&OP mensual</li>
+                    <li>Fuente unica de datos (Gestioo + BC integrados)</li>
+                    <li>Activacion de MTTO preventivo, Stock MRO y carga tiempo real en Gestioo</li>
+                </ul>
+                <div class="modelo-section-label">Indicadores de exito</div>
+                <div class="modelo-kpi">Forecast accuracy: <span>0%</span> &rarr; <em>&gt;70%</em></div>
+                <div class="modelo-kpi">Fill rate refacciones: <span>No se mide</span> &rarr; <em>&gt;95%</em></div>
+                <div style="margin-top:0.8rem;"><span class="who-tag who-geminis">Geminis 01</span></div>
+            </div>
+        </div>
+
+        <div class="ref-callout">
+            <strong>Referencia de industria:</strong> Empresas OFS de referencia operan con S&OP mensual integrado, costo logistico medido por ruta y por entrega, fill rate >95%, y forecast accuracy >75%. La integracion CMMS-ERP es prerequisito para S&OP funcional. SUMIMSA tiene 3 modulos pagados sin usar que son la base.
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================================ -->
 <!-- SLIDE FINAL: SIGUIENTE PASO                                  -->
 <!-- ============================================================ -->
 <div class="slide" id="siguiente">
@@ -2672,10 +3387,172 @@
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/PptxGenJS@3.12.0/dist/pptxgen.bundle.js"></script>
 <script>
 function closeToc() {
     document.querySelector('.toc-panel').classList.remove('open');
     document.querySelector('.toc-overlay').classList.remove('show');
+}
+
+// Add "Copiar slide" buttons to all slide-type elements that don't already have one
+document.addEventListener('DOMContentLoaded', function() {
+    var slideTypes = ['.slide', '.opp-slide', '.pilar-header', '.propuesta-slide', '.portada'];
+    slideTypes.forEach(function(sel) {
+        document.querySelectorAll(sel).forEach(function(el) {
+            if (!el.querySelector('.copy-slide-btn')) {
+                var btn = document.createElement('button');
+                btn.className = 'copy-slide-btn';
+                btn.textContent = 'Copiar slide';
+                btn.onclick = function() { copySlide(btn); };
+                el.appendChild(btn);
+            }
+        });
+    });
+});
+
+function copySlide(btn) {
+    var slide = btn.closest('.slide, .opp-slide, .pilar-header, .propuesta-slide, .portada');
+    if (!slide) return;
+    var clone = slide.cloneNode(true);
+    clone.querySelectorAll('.copy-slide-btn').forEach(function(b) { b.remove(); });
+    var html = clone.innerHTML;
+    var text = clone.innerText || clone.textContent;
+    var blob = new Blob([html], { type: 'text/html' });
+    var textBlob = new Blob([text], { type: 'text/plain' });
+    var item = new ClipboardItem({ 'text/html': blob, 'text/plain': textBlob });
+    navigator.clipboard.write([item]).then(function() {
+        var orig = btn.textContent;
+        btn.textContent = 'Copiado!';
+        btn.style.opacity = '1';
+        btn.style.borderColor = 'var(--green)';
+        btn.style.color = 'var(--green)';
+        setTimeout(function() {
+            btn.textContent = orig;
+            btn.style.borderColor = '';
+            btn.style.color = '';
+            btn.style.opacity = '';
+        }, 1500);
+    }).catch(function() {
+        var range = document.createRange();
+        range.selectNodeContents(slide);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        document.execCommand('copy');
+        sel.removeAllRanges();
+        btn.textContent = 'Copiado!';
+        setTimeout(function() { btn.textContent = 'Copiar slide'; }, 1500);
+    });
+}
+
+function getSlideText(el) {
+    var clone = el.cloneNode(true);
+    clone.querySelectorAll('.copy-slide-btn, .export-pptx-btn').forEach(function(b) { b.remove(); });
+    return (clone.innerText || clone.textContent || '').trim();
+}
+
+function getSlideTitle(el) {
+    var t = el.querySelector('.pilar-title, .propuesta-title, .opp-title, .portada h1, h2');
+    if (t) return (t.innerText || t.textContent || '').trim().substring(0, 80);
+    var text = getSlideText(el);
+    return text.substring(0, 60) + (text.length > 60 ? '...' : '');
+}
+
+function getMaturityScore(el) {
+    var ms = el.querySelector('.maturity-score .ms-num, .pbs-val, .ps-score');
+    if (ms) return (ms.innerText || ms.textContent || '').trim();
+    return null;
+}
+
+function getScoreColor(score) {
+    var n = parseFloat(score);
+    if (isNaN(n)) return '94a3b8';
+    if (n <= 1.5) return 'c0392b';
+    if (n <= 2.5) return 'd35400';
+    if (n <= 3.5) return 'b07800';
+    return '00875a';
+}
+
+function exportToPptx() {
+    var btn = document.querySelector('.export-pptx-btn');
+    btn.disabled = true;
+    btn.textContent = 'Generando...';
+
+    try {
+        var pptx = new PptxGenJS();
+        pptx.layout = 'LAYOUT_WIDE';
+        pptx.author = 'London Consulting Group';
+        pptx.company = 'SUMIMSA x LCG';
+        pptx.subject = 'Reporte de Oportunidades Geminis 02';
+
+        var allSlides = document.querySelectorAll('.portada, .slide, .opp-slide, .pilar-header, .propuesta-slide');
+
+        allSlides.forEach(function(el, idx) {
+            var pptSlide = pptx.addSlide();
+            pptSlide.background = { color: 'FFFFFF' };
+
+            var title = getSlideTitle(el);
+            var score = getMaturityScore(el);
+            var bodyText = getSlideText(el);
+
+            // Overline / tag
+            var overline = el.querySelector('.opp-eje-tag, .pilar-num, .portada-overline');
+            if (overline) {
+                pptSlide.addText((overline.innerText || '').trim(), {
+                    x: 0.5, y: 0.3, w: 9, h: 0.3,
+                    fontSize: 9, color: '94a3b8', fontFace: 'Arial',
+                    bold: true
+                });
+            }
+
+            // Title
+            pptSlide.addText(title, {
+                x: 0.5, y: 0.6, w: score ? 8 : 12, h: 0.8,
+                fontSize: 22, color: '0f172a', fontFace: 'Arial',
+                bold: true, valign: 'top'
+            });
+
+            // Score badge
+            if (score) {
+                var scoreColor = getScoreColor(score);
+                pptSlide.addText(score + '/5', {
+                    x: 10.5, y: 0.6, w: 2.5, h: 0.6,
+                    fontSize: 24, color: scoreColor, fontFace: 'Arial',
+                    bold: true, align: 'center',
+                    shape: pptx.ShapeType.roundRect,
+                    fill: { color: 'F8FAFC' },
+                    line: { color: 'E2E8F0', width: 1 },
+                    rectRadius: 0.1
+                });
+            }
+
+            // Body text (truncated for PPTX)
+            var body = bodyText;
+            if (body.length > 2000) body = body.substring(0, 2000) + '\n...';
+            pptSlide.addText(body, {
+                x: 0.5, y: 1.5, w: 12, h: 5.5,
+                fontSize: 10, color: '475569', fontFace: 'Arial',
+                valign: 'top', wrap: true, lineSpacing: 14
+            });
+
+            // Footer
+            pptSlide.addText('SUMIMSA x London Consulting Group | Geminis 02 | Abril 2026 | Confidencial', {
+                x: 0.5, y: 7.2, w: 12, h: 0.3,
+                fontSize: 7, color: 'CBD5E1', fontFace: 'Arial',
+                align: 'center'
+            });
+        });
+
+        pptx.writeFile({ fileName: 'Reporte_Oportunidades_Geminis02.pptx' }).then(function() {
+            btn.textContent = 'Exportar a PowerPoint';
+            btn.disabled = false;
+        });
+    } catch(e) {
+        console.error('PPTX export error:', e);
+        btn.textContent = 'Error - Reintentar';
+        btn.disabled = false;
+        alert('Error al generar PowerPoint: ' + e.message);
+    }
 }
 </script>
 
