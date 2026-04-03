@@ -3608,6 +3608,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/gh/gitbrent/PptxGenJS@3.12.0/dist/pptxgen.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script>
 function closeToc() {
     document.querySelector('.toc-panel').classList.remove('open');
@@ -3693,82 +3694,92 @@ function getScoreColor(score) {
     return '00875a';
 }
 
-function exportToPptx() {
+async function exportToPptx() {
     var btn = document.querySelector('.export-pptx-btn');
     btn.disabled = true;
-    btn.textContent = 'Generando...';
+    btn.textContent = 'Capturando slides... 0%';
 
     try {
         var pptx = new PptxGenJS();
-        pptx.layout = 'LAYOUT_WIDE';
+        pptx.layout = 'LAYOUT_WIDE'; // 13.33 x 7.5 inches
         pptx.author = 'London Consulting Group';
         pptx.company = 'SUMIMSA x LCG';
         pptx.subject = 'Reporte de Oportunidades Geminis 02';
 
         var allSlides = document.querySelectorAll('.portada, .slide, .opp-slide, .pilar-header, .propuesta-slide');
+        var total = allSlides.length;
 
-        allSlides.forEach(function(el, idx) {
+        // Hide buttons before capturing
+        document.querySelectorAll('.copy-slide-btn, .export-pptx-btn, .toc-btn, .toc-panel, .toc-overlay, .topbar').forEach(function(el) {
+            el.style.display = 'none';
+        });
+
+        for (var i = 0; i < total; i++) {
+            var el = allSlides[i];
+            btn.textContent = 'Capturando ' + (i+1) + ' de ' + total + '... ' + Math.round((i/total)*100) + '%';
+
+            // Temporarily make slide visible and sized for capture
+            var origStyle = el.getAttribute('style') || '';
+            el.style.width = '1200px';
+            el.style.minHeight = 'auto';
+            el.style.maxHeight = 'none';
+            el.style.overflow = 'visible';
+
+            var canvas = await html2canvas(el, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#ffffff',
+                width: 1200,
+                windowWidth: 1200,
+                logging: false
+            });
+
+            // Restore original style
+            el.setAttribute('style', origStyle);
+
+            var imgData = canvas.toDataURL('image/png');
+
             var pptSlide = pptx.addSlide();
             pptSlide.background = { color: 'FFFFFF' };
 
-            var title = getSlideTitle(el);
-            var score = getMaturityScore(el);
-            var bodyText = getSlideText(el);
-
-            // Overline / tag
-            var overline = el.querySelector('.opp-eje-tag, .pilar-num, .portada-overline');
-            if (overline) {
-                pptSlide.addText((overline.innerText || '').trim(), {
-                    x: 0.5, y: 0.3, w: 9, h: 0.3,
-                    fontSize: 9, color: '94a3b8', fontFace: 'Arial',
-                    bold: true
-                });
+            // Calculate dimensions to fit 13.33 x 7.5 with padding
+            var imgW = 12.5;
+            var imgH = (canvas.height / canvas.width) * imgW;
+            if (imgH > 7.0) {
+                imgH = 7.0;
+                imgW = (canvas.width / canvas.height) * imgH;
             }
+            var xPos = (13.33 - imgW) / 2;
+            var yPos = (7.5 - imgH) / 2;
 
-            // Title
-            pptSlide.addText(title, {
-                x: 0.5, y: 0.6, w: score ? 8 : 12, h: 0.8,
-                fontSize: 22, color: '0f172a', fontFace: 'Arial',
-                bold: true, valign: 'top'
+            pptSlide.addImage({
+                data: imgData,
+                x: xPos,
+                y: yPos,
+                w: imgW,
+                h: imgH
             });
+        }
 
-            // Score badge
-            if (score) {
-                var scoreColor = getScoreColor(score);
-                pptSlide.addText(score + '/5', {
-                    x: 10.5, y: 0.6, w: 2.5, h: 0.6,
-                    fontSize: 24, color: scoreColor, fontFace: 'Arial',
-                    bold: true, align: 'center',
-                    shape: pptx.ShapeType.roundRect,
-                    fill: { color: 'F8FAFC' },
-                    line: { color: 'E2E8F0', width: 1 },
-                    rectRadius: 0.1
-                });
-            }
-
-            // Body text (truncated for PPTX)
-            var body = bodyText;
-            if (body.length > 2000) body = body.substring(0, 2000) + '\n...';
-            pptSlide.addText(body, {
-                x: 0.5, y: 1.5, w: 12, h: 5.5,
-                fontSize: 10, color: '475569', fontFace: 'Arial',
-                valign: 'top', wrap: true, lineSpacing: 14
-            });
-
-            // Footer
-            pptSlide.addText('SUMIMSA x London Consulting Group | Geminis 02 | Abril 2026 | Confidencial', {
-                x: 0.5, y: 7.2, w: 12, h: 0.3,
-                fontSize: 7, color: 'CBD5E1', fontFace: 'Arial',
-                align: 'center'
-            });
+        // Restore UI
+        document.querySelectorAll('.copy-slide-btn, .toc-btn').forEach(function(el) {
+            el.style.display = '';
+        });
+        document.querySelectorAll('.export-pptx-btn, .topbar').forEach(function(el) {
+            el.style.display = '';
         });
 
-        pptx.writeFile({ fileName: 'Reporte_Oportunidades_Geminis02.pptx' }).then(function() {
-            btn.textContent = 'Exportar a PowerPoint';
-            btn.disabled = false;
-        });
+        btn.textContent = 'Generando archivo...';
+        await pptx.writeFile({ fileName: 'Reporte_Oportunidades_Geminis02.pptx' });
+        btn.textContent = 'Exportar a PowerPoint';
+        btn.disabled = false;
+
     } catch(e) {
         console.error('PPTX export error:', e);
+        // Restore UI on error
+        document.querySelectorAll('.copy-slide-btn, .export-pptx-btn, .toc-btn, .topbar').forEach(function(el) {
+            el.style.display = '';
+        });
         btn.textContent = 'Error - Reintentar';
         btn.disabled = false;
         alert('Error al generar PowerPoint: ' + e.message);
