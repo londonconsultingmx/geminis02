@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Oportunidades | SUMIMSA x London Consulting Group</title>
+    <style>
+        @font-face{font-family:'Satoshi';src:url('potu-img/Satoshi-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+        @font-face{font-family:'Satoshi';src:url('potu-img/Satoshi-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+        @font-face{font-family:'Satoshi';src:url('potu-img/Satoshi-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+        @font-face{font-family:'Satoshi';src:url('potu-img/Satoshi-Black.woff2') format('woff2');font-weight:900;font-display:swap}
+        :root{--navy:#0a1628;--dark:#0f2440;--accent:#0055a5;--accent-l:#0070d4;--accent-d:rgba(0,85,165,0.08);--lcg:#00b67a;--lcg-d:rgba(0,182,122,0.08);--gold:#f5a623;--gold-d:rgba(245,166,35,0.08);--red:#e63946;--red-d:rgba(230,57,70,0.06);--orange:#ff8c42;--orange-d:rgba(255,140,66,0.06);--purple:#7c3aed;--purple-d:rgba(124,58,237,0.06);--cyan:#0891b2;--cyan-d:rgba(8,145,178,0.06);--w:#fff;--off:#f8fafc;--g50:#f1f5f9;--g100:#e2e8f0;--g200:#cbd5e1;--g400:#94a3b8;--g500:#64748b;--g600:#475569;--g700:#334155;--g800:#1e293b;--g900:#0f172a;--bdr:#e2e8f0;--sh:0 1px 3px rgba(0,0,0,.06);--shm:0 4px 6px rgba(0,0,0,.05);--r:12px}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Satoshi','Inter',-apple-system,sans-serif;background:var(--off);color:var(--g800);line-height:1.7;overflow-x:hidden}
+        .ctn{max-width:1300px;margin:0 auto;padding:0 2rem}
+        section{padding:4rem 0}.sw{background:var(--w)}.sg{background:var(--g50)}.sd{background:var(--navy);color:var(--w)}.sa{background:linear-gradient(135deg,var(--accent),#003d7a);color:var(--w)}
+        .topbar{display:flex;justify-content:space-between;align-items:center;padding:.8rem 2rem;background:rgba(255,255,255,.95);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+        .topbar img{height:34px}.topbar-c{font-size:.72rem;color:var(--g500);letter-spacing:1px;text-transform:uppercase}
+        .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:6rem 2rem 4rem;background:linear-gradient(160deg,var(--navy) 0%,#0d2d4a 40%,#0a3260 70%,var(--accent) 100%);color:var(--w);position:relative;overflow:hidden}
+        .hero::after{content:'';position:absolute;right:-250px;bottom:-250px;width:700px;height:700px;border-radius:50%;background:rgba(0,182,122,.06);pointer-events:none}
+        .hero::before{content:'';position:absolute;right:5%;top:10%;width:400px;height:400px;border-radius:50%;background:rgba(0,85,165,.08);pointer-events:none;filter:blur(60px)}
+        .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1300px;margin:0 auto}
+        .hero-left{position:relative;z-index:2}.hero-right{position:relative;z-index:2}
+        .hero-over{font-size:.8rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1.5rem;display:inline-block;padding:6px 16px;border:1px solid rgba(255,255,255,.15);border-radius:50px}
+        .hero h1{font-size:clamp(2.8rem,5.5vw,4.5rem);font-weight:900;line-height:1.05;margin-bottom:1.5rem}
+        .hero h1 span{color:var(--lcg)}
+        .hero-sub{font-size:1.15rem;color:rgba(255,255,255,.6);max-width:600px;margin-bottom:2.5rem;line-height:1.8}
+        .hero-logos{display:flex;align-items:center;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap}
+        .hero-logos img{height:44px;filter:brightness(0) invert(1)}
+        .hero-logos .dv{width:1px;height:30px;background:rgba(255,255,255,.2)}
+        .hero-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+        .hs{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:1.5rem;backdrop-filter:blur(8px);text-align:center}
+        .hs .v{font-size:2rem;font-weight:900;color:var(--lcg)}.hs .l{font-size:.75rem;color:rgba(255,255,255,.45);margin-top:4px}
+        @media(max-width:900px){.hero-inner{grid-template-columns:1fr;gap:2rem}.hero h1{font-size:2.5rem}.hero-stats{grid-template-columns:1fr 1fr}}
+        .sl2{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border:1.5px solid var(--accent);border-radius:50px;font-size:.7rem;color:var(--accent);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:1rem}
+        .sl2.gr{border-color:var(--lcg);color:var(--lcg)}.sl2.gl{border-color:var(--gold);color:var(--gold)}.sl2.re{border-color:var(--red);color:var(--red)}.sl2.pu{border-color:var(--purple);color:var(--purple)}.sl2.cy{border-color:var(--cyan);color:var(--cyan)}
+        .st{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:900;margin-bottom:.5rem;line-height:1.2;color:var(--g900)}
+        .sd .st{color:var(--w)}.sa .st{color:var(--w)}
+        .ss{font-size:.95rem;color:var(--g500);margin-bottom:2.5rem;max-width:700px;line-height:1.8}
+        .mh{font-size:1.5rem;font-weight:900;margin-bottom:.5rem;padding-bottom:1rem;border-bottom:2px solid var(--bdr);display:flex;align-items:center;gap:1rem;color:var(--g900)}
+        .mn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:8px;background:var(--accent);color:var(--w);font-size:1rem;font-weight:900;flex-shrink:0}
+        .mn.gn{background:var(--lcg)}.mn.gl{background:var(--gold)}.mn.rd{background:var(--red)}.mn.pu{background:var(--purple)}.mn.cy{background:var(--cyan)}.mn.or{background:var(--orange)}
+        .msub{font-size:.9rem;color:var(--g500);margin-bottom:2rem;max-width:800px;line-height:1.7}
+        h3.sh3{font-size:1.15rem;font-weight:700;margin:2.5rem 0 1rem;color:var(--g800)}
+        .card{background:var(--w);border:1px solid var(--bdr);border-radius:16px;padding:1.8rem;box-shadow:var(--sh);margin-bottom:1.5rem}
+        .ct{font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--g800)}
+        .g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:1.5rem}
+        .g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem}
+        .g4{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem}
+        .tw2{overflow-x:auto;border-radius:var(--r);border:1px solid var(--bdr);margin-bottom:1.5rem;box-shadow:var(--sh)}
+        table{width:100%;border-collapse:collapse;font-size:.84rem}
+        thead th{background:var(--g50);padding:11px 13px;text-align:left;font-weight:700;font-size:.73rem;text-transform:uppercase;letter-spacing:.5px;color:var(--g600);border-bottom:2px solid var(--bdr);white-space:nowrap}
+        tbody td{padding:9px 13px;border-bottom:1px solid var(--g100);vertical-align:top;color:var(--g700)}
+        tbody tr:hover{background:var(--g50)}tbody tr:last-child td{border-bottom:none}
+        .fm{font-family:'JetBrains Mono','Fira Code',monospace;font-size:.8rem}
+        .tag{display:inline-flex;align-items:center;padding:2px 9px;border-radius:50px;font-size:.69rem;font-weight:700;white-space:nowrap}
+        .tb{background:var(--accent-d);color:var(--accent)}.tgn{background:var(--lcg-d);color:var(--lcg)}.tgl{background:var(--gold-d);color:#b07800}.tre{background:var(--red-d);color:var(--red)}.tor{background:var(--orange-d);color:#d06a1a}.tpu{background:var(--purple-d);color:var(--purple)}.tcy{background:var(--cyan-d);color:var(--cyan)}.tgy{background:var(--g50);color:var(--g500);border:1px solid var(--g200)}
+        .kr{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:1rem}
+        .kb{background:var(--g50);border-radius:var(--r);padding:1.1rem;text-align:center;border:1px solid var(--g100)}
+        .kv{font-size:1.3rem;font-weight:900}.kl{font-size:.68rem;color:var(--g500);margin-top:3px}
+        .sd .kb{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)}.sd .kl{color:rgba(255,255,255,.45)}
+        .co{border-left:4px solid var(--accent);padding:1.1rem 1.4rem;background:var(--accent-d);border-radius:0 var(--r) var(--r) 0;margin:1.5rem 0}
+        .co.cgr{border-left-color:var(--lcg);background:var(--lcg-d)}.co.cgl{border-left-color:var(--gold);background:var(--gold-d)}.co.cre{border-left-color:var(--red);background:var(--red-d)}.co.cpu{border-left-color:var(--purple);background:var(--purple-d)}
+        .cot{font-weight:700;margin-bottom:.3rem;color:var(--g800)}.cob{font-size:.86rem;color:var(--g600);line-height:1.7}
+        .dv{height:1px;background:var(--bdr);margin:3rem 0}
+        .ta2{color:var(--accent)}.tg2{color:var(--lcg)}.tr2{color:var(--red)}.tp3{color:var(--purple)}.to2{color:var(--orange)}.tc2{color:var(--cyan)}.tgl2{color:var(--gold)}.tgr2{color:var(--g500)}
+        .fw9{font-weight:900}.fw7{font-weight:700}.fw5{font-weight:500}
+        .mt1{margin-top:1rem}.mt2{margin-top:2rem}.mt3{margin-top:3rem}.mb1{margin-bottom:1rem}.mb2{margin-bottom:2rem}
+        .ts2{font-size:.86rem}.txs2{font-size:.73rem}.tc3{text-align:center}
+        .footer{background:var(--navy);color:rgba(255,255,255,.45);padding:2.5rem 2rem}
+        .fi{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;max-width:1300px;margin:0 auto}
+        .fi img{height:28px;filter:brightness(0) invert(1);opacity:.55}
+        .ft{font-size:.76rem;text-align:right}
+        .toc-btn{position:fixed;left:14px;top:62px;z-index:200;background:var(--w);border:1px solid var(--bdr);border-radius:8px;color:var(--accent);padding:7px 11px;cursor:pointer;font-size:.76rem;font-weight:700;box-shadow:var(--shm);font-family:inherit}
+        .toc-p{position:fixed;left:0;top:0;width:290px;height:100vh;background:var(--w);border-right:1px solid var(--bdr);overflow-y:auto;z-index:300;transform:translateX(-100%);transition:transform .3s;padding:1.3rem 1rem;box-shadow:0 10px 15px rgba(0,0,0,.06)}
+        .toc-p.open{transform:translateX(0)}
+        .toc-p .tc4{float:right;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--g500)}
+        .toc-p a{display:block;padding:5px 10px;color:var(--g600);text-decoration:none;font-size:.76rem;border-radius:4px;margin-bottom:1px}
+        .toc-p a:hover{background:var(--accent-d);color:var(--accent)}
+        .toc-s{font-size:.66rem;text-transform:uppercase;letter-spacing:1px;color:var(--accent);padding:10px 10px 3px;font-weight:700}
+        .toc-o{position:fixed;inset:0;background:rgba(0,0,0,.25);z-index:250;display:none}.toc-o.show{display:block}
+
+        /* Maturity badge */
+        .mat-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:50px;font-size:.78rem;font-weight:900;white-space:nowrap}
+        .mat-badge.m1{background:var(--red-d);color:var(--red)}
+        .mat-badge.m2{background:var(--orange-d);color:#d06a1a}
+        .mat-badge.m3{background:var(--gold-d);color:#b07800}
+        .mat-badge.m4{background:var(--accent-d);color:var(--accent)}
+        .mat-badge.m5{background:var(--lcg-d);color:var(--lcg)}
+        .mat-badge.mp{background:var(--g50);color:var(--g400);border:1px solid var(--g200)}
+
+        /* Gauge row */
+        .gauge-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;margin:2rem 0}
+        .gauge-item{text-align:center;padding:1.2rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--r)}
+        .gauge-val{font-size:2rem;font-weight:900;margin-bottom:4px}
+        .gauge-lbl{font-size:.72rem;color:rgba(255,255,255,.45)}
+        .gauge-bar{height:6px;background:rgba(255,255,255,.1);border-radius:3px;margin-top:8px;overflow:hidden}
+        .gauge-fill{height:100%;border-radius:3px}
+
+        /* Eje header */
+        .eje-hdr{background:var(--navy);color:var(--w);border-radius:var(--r);padding:2rem;margin-bottom:2rem;position:relative;overflow:hidden}
+        .eje-hdr::after{content:'';position:absolute;right:-80px;top:-80px;width:200px;height:200px;border-radius:50%;background:rgba(0,85,165,.15);pointer-events:none}
+        .eje-hdr .eje-num{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.5rem}
+        .eje-hdr .eje-title{font-size:1.6rem;font-weight:900;margin-bottom:.3rem}
+        .eje-hdr .eje-question{font-size:.9rem;color:rgba(255,255,255,.5);font-style:italic;margin-top:.5rem}
+        .eje-hdr .eje-score{position:absolute;right:2rem;top:50%;transform:translateY(-50%);text-align:center}
+        .eje-hdr .eje-score .sv{font-size:2.5rem;font-weight:900}.eje-hdr .eje-score .sl{font-size:.7rem;color:rgba(255,255,255,.4)}
+
+        /* Flow bar */
+        .flow-bar{display:flex;align-items:center;gap:0;margin:1.5rem 0 2rem;overflow-x:auto;padding-bottom:.5rem}
+        .flow-step{display:flex;align-items:center;gap:0;white-space:nowrap}
+        .flow-step .fs-box{padding:8px 16px;background:var(--accent-d);border:1px solid rgba(0,85,165,.15);border-radius:6px;font-size:.72rem;font-weight:700;color:var(--accent)}
+        .flow-step .fs-arrow{color:var(--g300);font-size:.8rem;margin:0 4px;color:var(--g400)}
+
+        /* Oportunidad card */
+        .op-card{background:var(--w);border:1px solid var(--bdr);border-radius:var(--r);padding:0;box-shadow:var(--sh);margin-bottom:1.5rem;overflow:hidden}
+        .op-card .op-head{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 1.5rem;border-bottom:1px solid var(--g100);flex-wrap:wrap;gap:.5rem}
+        .op-card .op-title{font-size:1.05rem;font-weight:900;color:var(--g900)}
+        .op-card .op-star{color:var(--gold);margin-right:6px}
+        .op-card .op-body{padding:1.5rem}
+        .op-card .op-section{margin-bottom:1rem}
+        .op-card .op-label{font-size:.7rem;text-transform:uppercase;letter-spacing:1px;font-weight:700;color:var(--g400);margin-bottom:.3rem}
+        .op-card .op-text{font-size:.86rem;color:var(--g600);line-height:1.75}
+        .op-card .op-text strong{color:var(--g800)}
+        .op-card .op-footer{padding:.8rem 1.5rem;background:var(--g50);border-top:1px solid var(--g100);display:flex;align-items:center;gap:.5rem}
+
+        /* Proyecto slide */
+        .proy-card{background:var(--w);border:2px solid var(--lcg);border-radius:var(--r);overflow:hidden;margin:2.5rem 0;box-shadow:var(--sh)}
+        .proy-head{background:linear-gradient(135deg,#00b67a,#009963);color:var(--w);padding:1.5rem;display:flex;align-items:center;gap:1rem}
+        .proy-head .ph-icon{width:44px;height:44px;background:rgba(255,255,255,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+        .proy-head .ph-title{font-size:1.2rem;font-weight:900}
+        .proy-head .ph-sub{font-size:.78rem;color:rgba(255,255,255,.6)}
+        .proy-body{padding:1.5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+        .proy-col h4{font-size:.78rem;text-transform:uppercase;letter-spacing:1px;font-weight:700;color:var(--lcg);margin-bottom:.5rem}
+        .proy-col ul{list-style:none;padding:0;margin:0}
+        .proy-col li{font-size:.84rem;color:var(--g600);padding:4px 0;padding-left:14px;position:relative;line-height:1.6}
+        .proy-col li::before{content:'';position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:var(--lcg)}
+        .proy-ref{padding:1rem 1.5rem;background:var(--lcg-d);border-top:1px solid rgba(0,182,122,.15);font-size:.82rem;color:#006b45;line-height:1.7}
+
+        /* Who tag */
+        .who-tag{display:inline-flex;align-items:center;padding:3px 10px;border-radius:50px;font-size:.68rem;font-weight:700;white-space:nowrap}
+        .who-london{background:var(--accent-d);color:var(--accent)}
+        .who-geminis{background:var(--lcg-d);color:var(--lcg)}
+        .who-sub{background:var(--gold-d);color:#b07800}
+
+        /* Summary table at the end */
+        .sum-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);border:1px solid var(--bdr)}
+        .sum-table thead th{background:var(--navy);color:var(--w);padding:12px 15px;font-size:.73rem;text-transform:uppercase;letter-spacing:.5px;border:none}
+        .sum-table tbody td{padding:10px 15px;border-bottom:1px solid var(--g100);font-size:.86rem}
+
+        .disc{background:var(--gold-d);border:1px solid rgba(245,166,35,.2);border-radius:var(--r);padding:1.2rem 1.5rem;margin:2rem 0;font-size:.82rem;color:#8a6b1a;line-height:1.7}
+        .disc strong{color:#6b5200}
+
+        @media(max-width:768px){
+            .g2,.g3,.g4{grid-template-columns:1fr}
+            .hero h1{font-size:2rem}
+            .hero{padding:4rem 1.2rem 3rem}
+            .hero-logos img{height:34px}
+            .hero-stats{grid-template-columns:1fr 1fr;gap:.8rem}
+            .hs{padding:1rem}.hs .v{font-size:1.4rem}
+            .ctn{padding:0 1.2rem}section{padding:2.5rem 0}
+            .st{font-size:1.5rem}.mh{font-size:1.2rem;gap:.7rem}
+            .topbar{padding:.6rem 1rem}.topbar img{height:26px}.topbar-c{display:none}
+            .toc-btn{left:10px;top:54px;font-size:.7rem;padding:5px 8px}
+            .card{padding:1.3rem}
+            .eje-hdr .eje-score{position:static;transform:none;text-align:left;margin-top:1rem}
+            .op-card .op-head{flex-direction:column;align-items:flex-start}
+            .flow-bar{flex-wrap:wrap}
+            .proy-body{grid-template-columns:1fr}
+            .gauge-row{grid-template-columns:1fr 1fr}
+        }
+        @media print{.topbar,.toc-btn,.toc-p,.toc-o{display:none}.hero{min-height:auto;padding:3rem 2rem}body{background:#fff}.card,.op-card,.proy-card{box-shadow:none;break-inside:avoid}section{page-break-inside:avoid}}
+    </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+    <img src="sumimsa.png" alt="SUMIMSA">
+    <div class="topbar-c">Reporte de Oportunidades &bull; Geminis 02 &bull; Abril 2026</div>
+    <div style="display:flex;align-items:center;gap:1rem"><img src="lcg-logo.png" alt="LCG" style="height:26px"></div>
+</div>
+
+<!-- TOC -->
+<button class="toc-btn" onclick="document.querySelector('.toc-p').classList.add('open');document.querySelector('.toc-o').classList.add('show')">&#9776; Indice</button>
+<div class="toc-o" onclick="cT()"></div>
+<nav class="toc-p"><button class="tc4" onclick="cT()">&times;</button>
+<div style="font-weight:900;font-size:.95rem;margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--bdr)">Reporte de Oportunidades</div>
+<div class="toc-s">Portada</div>
+<a href="#hero" onclick="cT()">Portada</a>
+<a href="#resumen" onclick="cT()">Resumen Ejecutivo</a>
+<div class="toc-s">Ejes del Diagnostico</div>
+<a href="#e01" onclick="cT()">Eje 01 &mdash; Modelo Operativo & Lineas</a>
+<a href="#e02" onclick="cT()">Eje 02 &mdash; Oportunidad de Contrato</a>
+<a href="#e03" onclick="cT()">Eje 03 &mdash; Comercializacion & Pipeline</a>
+<a href="#e04" onclick="cT()">Eje 04 &mdash; Programacion y Ejecucion</a>
+<a href="#e05" onclick="cT()">Eje 05 &mdash; Calidad & Confiabilidad</a>
+<div class="toc-s">Cierre</div>
+<a href="#resumen-final" onclick="cT()">Resumen Consolidado</a>
+<a href="#siguiente-paso" onclick="cT()">Siguiente Paso</a>
+</nav>
+
+<!-- ============================================ -->
+<!-- HERO -->
+<!-- ============================================ -->
+<section class="hero" id="hero">
+<div class="hero-inner">
+<div class="hero-left">
+<div class="hero-logos"><img src="sumimsa.png" alt="SUMIMSA" style="height:48px"><div class="dv" style="height:30px;width:1px;background:rgba(255,255,255,.2)"></div><img src="lcg-logo.png" alt="LCG" style="height:32px"></div>
+<div class="hero-over">Geminis 02 &bull; Abril 2026</div>
+<h1>Reporte de<br><span>Oportunidades</span></h1>
+<p class="hero-sub">Diagnostico de Madurez Operativa &mdash; Talleres 601, TBX, Balanceo de Personal, Distribucion. Proyecto consolidado: $796.6M USD.</p>
+</div>
+<div class="hero-right">
+<div class="hero-stats">
+<div class="hs"><div class="v">5</div><div class="l">Ejes evaluados</div></div>
+<div class="hs"><div class="v">59</div><div class="l">Puntos diagnosticados</div></div>
+<div class="hs"><div class="v" style="color:var(--red)">1.6/5</div><div class="l">Madurez promedio</div></div>
+</div>
+<div style="margin-top:1.5rem;padding:1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);font-size:.72rem;color:rgba(255,255,255,.4)">
+<strong style="color:rgba(255,255,255,.6)">Preparado por:</strong> London Consulting Group<br>
+<strong style="color:rgba(255,255,255,.6)">Fecha:</strong> Abril 2026<br>
+<strong style="color:rgba(255,255,255,.6)">Clasificacion:</strong> Confidencial &mdash; Uso interno
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- RESUMEN EJECUTIVO -->
+<!-- ============================================ -->
+<section class="sd" id="resumen" style="padding:3.5rem 0">
+<div class="ctn">
+<div class="sl2" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.5)">Resumen Ejecutivo</div>
+<h2 class="st" style="margin-bottom:1rem">La operacion tiene las capacidades &mdash; le falta el modelo</h2>
+<p style="font-size:.95rem;color:rgba(255,255,255,.55);max-width:900px;line-height:1.85;margin-bottom:2rem">
+SUMIMSA opera contratos por <strong style="color:var(--w)">$796.6M USD</strong> con una operacion que hoy pierde dinero en Talleres (<strong style="color:var(--red)">-$389K EBITDA, -6.8%</strong>). El diagnostico revela oportunidades criticas en 5 ejes con una madurez promedio de <strong style="color:var(--red)">1.6/5</strong>. Las palancas principales son: estimaciones (<strong style="color:var(--w)">$24.8M atrapados</strong>), inventario (<strong style="color:var(--w)">$5.1M excedente</strong>), programacion (<strong style="color:var(--w)">76% reactiva</strong>), y documentacion (<strong style="color:var(--w)">70% sin RAF</strong>). La linea ECS demuestra que cuando el modelo funciona, los resultados siguen: 86% cumplimiento, 13% EBITDA, lider de mercado. El reto es replicar ese nivel en las 4 lineas restantes.
+</p>
+
+<div class="gauge-row">
+<div class="gauge-item">
+<div class="gauge-val" style="color:var(--red)">1.5</div>
+<div class="gauge-lbl">Operaciones 601</div>
+<div class="gauge-bar"><div class="gauge-fill" style="width:30%;background:var(--red)"></div></div>
+</div>
+<div class="gauge-item">
+<div class="gauge-val" style="color:var(--orange)">2.3</div>
+<div class="gauge-lbl">Operaciones TBX</div>
+<div class="gauge-bar"><div class="gauge-fill" style="width:46%;background:var(--orange)"></div></div>
+</div>
+<div class="gauge-item">
+<div class="gauge-val" style="color:var(--red)">1.4</div>
+<div class="gauge-lbl">Balanceo de Personal</div>
+<div class="gauge-bar"><div class="gauge-fill" style="width:28%;background:var(--red)"></div></div>
+</div>
+<div class="gauge-item">
+<div class="gauge-val" style="color:var(--red)">1.2</div>
+<div class="gauge-lbl">Distribucion</div>
+<div class="gauge-bar"><div class="gauge-fill" style="width:24%;background:var(--red)"></div></div>
+</div>
+<div class="gauge-item">
+<div class="gauge-val" style="color:var(--g400)">---</div>
+<div class="gauge-lbl">Control Interno</div>
+<div class="gauge-bar"><div class="gauge-fill" style="width:0%;background:var(--g400)"></div></div>
+</div>
+<div class="gauge-item">
+<div class="gauge-val" style="color:var(--g400)">---</div>
+<div class="gauge-lbl">Sistemas</div>
+<div class="gauge-bar"><div class="gauge-fill" style="width:0%;background:var(--g400)"></div></div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1rem">
+<div class="kb" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)"><div class="kv" style="color:var(--red)">-$389K</div><div class="kl" style="color:rgba(255,255,255,.45)">EBITDA Talleres 601</div></div>
+<div class="kb" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)"><div class="kv" style="color:var(--red)">$24.8M</div><div class="kl" style="color:rgba(255,255,255,.45)">Ejecutado sin estimar</div></div>
+<div class="kb" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)"><div class="kv" style="color:var(--orange)">$5.1M</div><div class="kl" style="color:rgba(255,255,255,.45)">Inventario excedente</div></div>
+<div class="kb" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)"><div class="kv" style="color:var(--orange)">76%</div><div class="kl" style="color:rgba(255,255,255,.45)">OTs reactivas</div></div>
+<div class="kb" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)"><div class="kv" style="color:var(--red)">70%</div><div class="kl" style="color:rgba(255,255,255,.45)">Sin RAF</div></div>
+<div class="kb" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)"><div class="kv" style="color:var(--orange)">205d</div><div class="kl" style="color:rgba(255,255,255,.45)">Dias para estimar</div></div>
+</div>
+</div>
+</section>
+
+
+<!-- ============================================ -->
+<!-- EJE 01 -->
+<!-- ============================================ -->
+<section class="sw" id="e01"><div class="ctn">
+
+<div class="eje-hdr">
+<div class="eje-num">Eje 01</div>
+<div class="eje-title">Modelo Operativo & Lineas de Negocio</div>
+<div class="eje-question">&iquest;Como despliego un nuevo equipo o una nueva linea de negocio &mdash; en el mercado donde ya estoy o en una industria nueva?</div>
+<div class="eje-score"><div class="sv" style="color:var(--red)">1.2</div><div class="sl">/ 5 madurez</div></div>
+</div>
+
+<!-- Flow -->
+<div class="flow-bar">
+<div class="flow-step"><div class="fs-box">Evaluacion de mercado</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Decision estrategica</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Pre-requisitos</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Estructura y P&amp;L</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Setup sistemas</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Despliegue</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Medicion</div></div>
+</div>
+
+<!-- Oportunidades -->
+<h3 class="sh3">Oportunidades identificadas</h3>
+
+<!-- OP 1.1 -->
+<div class="op-card">
+<div class="op-head">
+<div><span class="op-star">&#11088;</span><span class="op-title">Modelo operativo estandarizado por linea</span></div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+Cada linea opera de forma distinta. <strong>ECS</strong> es el benchmark: 86% cumplimiento, 13% EBITDA, 68.4% partidas activas, enfoque Derrick 15/23 = 65.2%. En contraste, <strong>BDL</strong> tiene 32% cumplimiento, -75% EBITDA y pierde participacion vs MPG en Norte (-27.5pp en un mes). <strong>BOP</strong> opera con 0% servicios y 41% utilizacion WOM, sin taller propio. <strong>TD</strong> tiene 918 partidas MTU = $0 venta, con desalineacion contractual. <strong>KK</strong> solo esta presente en region Sur.<br><br>
+No hay plantilla maestra de modelo operativo. El know-how vive en la cabeza de los gerentes de linea. No existe un proceso documentado para replicar el exito de una linea a las demas.
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+5 lineas con 5 niveles de desempeno radicalmente distintos. La eficiencia de ECS no se transfiere a BDL, BOP, TD ni KK. El costo de no estandarizar: <strong>-$389K EBITDA consolidado</strong> cuando una sola linea (ECS) demuestra que el modelo SI puede funcionar.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 1.2 -->
+<div class="op-card">
+<div class="op-head">
+<div><span class="op-star">&#11088;</span><span class="op-title">Estandarizacion de oferta de valor y alcance de servicios</span></div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+No existe un "line card" por linea con servicios, pricing, SLAs y diferencial competitivo. <strong>BOP no vende servicios en absoluto</strong> &mdash; todo el ingreso es refaccionamiento. TD tiene desalineacion de marca contractual. BDL no diferencia su propuesta de valor vs MPG. Sin oferta documentada, el equipo comercial no tiene herramienta para vender el alcance completo.
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+Se dejan partidas y servicios en la mesa por no tener claro el alcance. El gap de servicios es <strong>-$1.6M (-38%)</strong> vs presupuesto, directamente relacionado con la falta de definicion de oferta.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 1.3 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Proceso de evaluacion y despliegue de nuevos equipos</div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+Todo se decide por empuje del DG. No hay stage-gates. Componentes criticos 602 ($200M, 50% avance), equipos 550 HP Care Industries ($150M), NOV-FMS ($1-3M/ano), Cabezales IP (Weatherford, PERECO) &mdash; todos avanzaron sin proceso formal. TD tiene 918 partidas MTU = error evitable que surgio por no validar requisitos contractuales antes del despliegue.
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+Se arriesga capital sin modelo financiero. No es escalable. Tiempo decision-a-primera-factura actual: <strong>6-12 meses</strong> sin visibilidad de ROI.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 1.4 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">P&amp;L por linea como herramienta de decision</div>
+<span class="mat-badge m2">Madurez: 2/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+El P&amp;L existe en el Comite de Productividad pero es <strong>informativo, no decisorio</strong>. No hay reglas tipo "si EBITDA negativo 3 meses consecutivos, se activa plan de correccion". BDL sostiene 89 HC con $862K de venta acumulada. ECS tiene 113 HC con $3,428K. La informacion existe pero no genera accion.
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+Lineas deficitarias no se corrigen a tiempo. BDL lleva meses con EBITDA negativo (-$643K acumulado) sin que el P&amp;L haya detonado una intervencion formal.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 1.5 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Setup en sistemas para equipos nuevos</div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+No hay checklist de activacion. Alta en Gestioo, Business Central y Sistema Comercial se hace ad hoc cada vez. Los arboles de equipos se construyen desde cero. No hay template de centros de costo, catalogo de OTs ni partidas contractuales predefinidas.
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+Cada despliegue se reinventa. Retrasos en la configuracion de sistemas atrasan la primera factura y generan errores en la captura inicial.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- Proyecto Eje 01 -->
+<div class="proy-card">
+<div class="proy-head">
+<div class="ph-icon">&#9881;</div>
+<div><div class="ph-title">Propuesta de Proyecto &mdash; Eje 01</div><div class="ph-sub">Modelo Operativo & Lineas de Negocio</div></div>
+</div>
+<div class="proy-body">
+<div class="proy-col">
+<h4>Modelos a disenar</h4>
+<ul>
+<li>Modelo operativo estandarizado por linea (TD, ECS, KK, BOP, BDL)</li>
+<li>Modelo de expansion y despliegue de nuevos equipos / mercados</li>
+</ul>
+</div>
+<div class="proy-col">
+<h4>Entregables clave</h4>
+<ul>
+<li>Deployment Playbook (9 modulos)</li>
+<li>P&amp;L estandarizado por linea con reglas de decision</li>
+<li>Checklist de setup en sistemas (Gestioo + BC + SC)</li>
+<li>Line cards por linea con servicios, pricing y SLAs</li>
+</ul>
+</div>
+<div class="proy-col">
+<h4>Indicadores de exito</h4>
+<ul>
+<li>Modelo documentado por linea: 0 &rarr; 6 lineas</li>
+<li>Tiempo decision-a-factura: 6-12m &rarr; &lt;4m</li>
+</ul>
+</div>
+<div class="proy-col">
+<h4>Quien ejecuta</h4>
+<ul>
+<li><span class="who-tag who-london" style="margin-right:4px">London G02</span> Diseno del playbook y modelos</li>
+<li><span class="who-tag who-sub" style="margin-right:4px">Subdirectores</span> Validacion y adopcion</li>
+</ul>
+</div>
+</div>
+<div class="proy-ref"><strong>Referencia de industria:</strong> NOV, SLB y Halliburton operan con Product Line Operating Models y stage-gate process para lanzamiento de nuevas lineas (SEC 10-K filings). Cada linea tiene P&amp;L autonomo con governance trimestral.</div>
+</div>
+
+</div></section>
+
+
+<!-- ============================================ -->
+<!-- EJE 02 -->
+<!-- ============================================ -->
+<section class="sg" id="e02"><div class="ctn">
+
+<div class="eje-hdr">
+<div class="eje-num">Eje 02</div>
+<div class="eje-title">Oportunidad de Contrato</div>
+<div class="eje-question">&iquest;Cual es mi alcance contractual? Universo contractual vs posicion real en campo.</div>
+<div class="eje-score"><div class="sv" style="color:var(--orange)">1.8</div><div class="sl">/ 5 madurez</div></div>
+</div>
+
+<div class="flow-bar">
+<div class="flow-step"><div class="fs-box">Contrato</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Anexo C (partidas)</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Equipos en campo</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Presencia por region</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Market share</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Mix 80/20</div></div>
+</div>
+
+<h3 class="sh3">Oportunidades identificadas</h3>
+
+<!-- OP 2.1 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Cobertura contractual del Anexo C</div>
+<span class="mat-badge m2">Madurez: 2/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+Solo <strong>21% de partidas activas</strong> (1,274 de 5,956). Por linea: BOP 2,424 partidas con 8.2% activas, ECS 586 con 68.4%, BDL 1,237 con 28.1%, TD 1,182 con 7.0%, KK 300 con 22.7%. Solo <strong>119 partidas (11.4%)</strong> generan el 80% del ingreso ($64.8M).
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+<strong>$264M pendientes de ejercer</strong> en el contrato 601. El 79% del catalogo no genera ingreso alguno. Cada partida inactiva es una oportunidad de venta desaprovechada.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 2.2 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Intercambios vs venta contractual formal</div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+Aproximadamente <strong>40% de la venta se hace via intercambios</strong>. $13.59M sin linea de servicio asignada. 32 SKUs de alta demanda ocultos en intercambios (5+ veces, 68% items, $10.2M). No hay catalogo ni mapeo formal. El Anexo C lleva 3 anos sin actualizarse.
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+Venta informal con riesgo de rechazo por PEMEX. Los intercambios no se contabilizan correctamente y dificultan la trazabilidad de estimaciones.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 2.3 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Analisis Pareto 80/20</div>
+<span class="mat-badge m2">Madurez: 2/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+Las top 3 partidas (operacion diaria ECS) representan el <strong>20.3% del ingreso total</strong>. ECS tiene 47 partidas activas generando $38.2M. BOP tiene 29 partidas y $0 en servicios, con $9.2M en refacciones. El Pareto esta concentrado pero no se usa para priorizar esfuerzo comercial.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-geminis">Geminis 01</span></div>
+</div>
+
+<!-- OP 2.4 -->
+<div class="op-card">
+<div class="op-head">
+<div><span class="op-star">&#11088;</span><span class="op-title">Presencia en campo y market share</span></div>
+<span class="mat-badge m2">Madurez: 2/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+58 rigs PEMEX activos (24 Norte, 26 Sur, 7 Marina). 61 presencias SUMIMSA vs 53 competencia. <strong>BDL 61.8%</strong> pero perdio -27.5pp vs Enero: 3 rigs a GOME en Sur, 1 a MPG en Norte. <strong>ECS 60.9%</strong> (+4.4pp, gano Burgos 5 rigs en Norte). <strong>TD 50%</strong> pero 0 presencia en Norte y 17 equipos PM sin HMH. KK 23.5%. BOP 100% vendidos pero 41% utilizacion WOM. Se perdieron 4 rigs en febrero.
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+Cada rig perdido = <strong>$200-500K/ano</strong> en ingreso perdido. La tendencia de BDL es alarmante y requiere intervencion inmediata en region Norte.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 2.5 -->
+<div class="op-card">
+<div class="op-head">
+<div><span class="op-star">&#11088;</span><span class="op-title">Presupuesto 601 bottom-up</span></div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+No existe presupuesto a nivel partida. El presupuesto es <strong>top-down</strong>: se asigna un monto global por linea sin desglosar por partida contractual, region ni tipo de servicio. El cumplimiento actual es <strong>53%</strong> pero no se sabe donde esta el gap a nivel granular.
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+Sin presupuesto bottom-up, es imposible gestionar la venta por partida. Los gerentes de linea no tienen metas especificas que perseguir.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- Proyecto Eje 02 -->
+<div class="proy-card">
+<div class="proy-head">
+<div class="ph-icon">&#128202;</div>
+<div><div class="ph-title">Propuesta de Proyecto &mdash; Eje 02</div><div class="ph-sub">Oportunidad de Contrato</div></div>
+</div>
+<div class="proy-body">
+<div class="proy-col">
+<h4>Modelos a disenar</h4>
+<ul>
+<li>Modelo de cobertura contractual 601</li>
+<li>Modelo de market share potencial por linea</li>
+<li>Mapa de gaps comerciales-operativos</li>
+<li>Modelo de licitacion / inclusion de partidas del contrato</li>
+</ul>
+</div>
+<div class="proy-col">
+<h4>Entregables clave</h4>
+<ul>
+<li>Mapa de 5,956 partidas (activas / inactivas / gaps)</li>
+<li>Dashboard PBI market share: 58 rigs x 5 lineas x 3 regiones</li>
+<li>Presupuesto 601 bottom-up por partida</li>
+<li>Repositorio de intercambios con plan de inclusion</li>
+</ul>
+</div>
+<div class="proy-col">
+<h4>Indicadores de exito</h4>
+<ul>
+<li>Partidas activas: 21% &rarr; &gt;40%</li>
+<li>Market share: 53.5% &rarr; &gt;65%</li>
+<li>Intercambios: ~40% &rarr; &lt;5%</li>
+</ul>
+</div>
+<div class="proy-col">
+<h4>Quien ejecuta</h4>
+<ul>
+<li><span class="who-tag who-london" style="margin-right:4px">London G02</span> Mapeo y modelos</li>
+<li><span class="who-tag who-geminis" style="margin-right:4px">Geminis 01</span> Pareto y depuracion</li>
+</ul>
+</div>
+</div>
+<div class="proy-ref"><strong>Referencia de industria:</strong> Los OFS majors gestionan su cobertura contractual con Contract Utilization Rate (CUR) y capturan >80% del catalogo en contratos maduros. El market share tracking se hace semanal por rig y por linea.</div>
+</div>
+
+</div></section>
+
+
+<!-- ============================================ -->
+<!-- EJE 03 -->
+<!-- ============================================ -->
+<section class="sw" id="e03"><div class="ctn">
+
+<div class="eje-hdr">
+<div class="eje-num">Eje 03</div>
+<div class="eje-title">Comercializacion & Pipeline</div>
+<div class="eje-question">&iquest;Lo estoy convirtiendo en venta? Presupuesto vs real, pipeline, hit rate.</div>
+<div class="eje-score"><div class="sv" style="color:var(--red)">1.4</div><div class="sl">/ 5 madurez</div></div>
+</div>
+
+<div class="flow-bar">
+<div class="flow-step"><div class="fs-box">Presupuesto</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Venta (Srv & Ref)</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">PVs</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Inventario</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Estimaciones</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Facturacion</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Cobranza</div></div>
+</div>
+
+<h3 class="sh3">Oportunidades identificadas</h3>
+
+<!-- OP 3.1 -->
+<div class="op-card">
+<div class="op-head">
+<div><span class="op-star">&#11088;</span><span class="op-title">Cumplimiento venta por linea</span></div>
+<span class="mat-badge m2">Madurez: 2/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+<strong>53% cumplimiento total</strong>. ECS 86%, KK 74%, TD 41%, BDL 32%, BOP 28%. El ciclo vicioso: PVs mal hechos &rarr; OTs sin ejecutar &rarr; baja venta &rarr; inventario excedente ($5.1M) &rarr; costo financiero (34% de venta) &rarr; estimaciones atrasadas (205 dias) &rarr; cash atrapado ($24.8M) &rarr; EBITDA negativo (-$389K) &rarr; sin capacidad de inversion &rarr; el ciclo se repite.
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+El gap de ingreso acumulado es <strong>-$5,066K</strong> vs presupuesto. El ciclo vicioso atrapa capital y destruye rentabilidad.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-geminis">Geminis 01</span></div>
+</div>
+
+<!-- OP 3.2 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Cumplimiento por tipo: refacciones vs servicios</div>
+<span class="mat-badge m2">Madurez: 2/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+Gap refacciones: <strong>-$3.5M (-53%)</strong>. Gap servicios: <strong>-$1.6M (-38%)</strong>. BOP concentra $2M del gap de refacciones (57% del gap total). La estrategia de recuperacion debe priorizar refaccionamiento. Mix SUMIMSA actual: 55% refacciones / 45% servicios. Referencia OFS: 36% refacciones / 64% servicios (NOV/SLB/Halliburton SEC 10-K).
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 3.3 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Gestion de Pedidos de Venta (PVs)</div>
+<span class="mat-badge m2">Madurez: 2/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+Se depuro de <strong>$151M (Ago 2025) a $8M (Mar 2026)</strong>. Falta: cierre documental, carga de servicios (100% faltante), pipeline visible, trazabilidad estimaciones-PVs, y mas de $5M reclasificados a Stock sin resolucion.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 3.4 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Aprovechamiento inventario &mdash; matriz costo-consumo</div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+<strong>$7.9M (58%)</strong> del inventario genera solo 3% de las ventas de los ultimos 6 meses. $5.9M (32%) genera el 97%. <strong>$6.17M sin venta alguna</strong> (A-Alto $4.4M, B-Medio $1.35M, C-Bajo $421K). No existe plan de liquidacion.
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+Capital muerto que genera costo financiero. El excedente de BDL (22.6 meses de inventario, $5.1M) es el caso mas critico.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-geminis">Geminis 01</span></div>
+</div>
+
+<!-- OP 3.5 -->
+<div class="op-card">
+<div class="op-head">
+<div><span class="op-star">&#11088;</span><span class="op-title">Conversion ejecutado a estimacion</span></div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+$82.2M ejecutados. <strong>$33.8M facturado (41%)</strong>, $23.7M estimado (29%), $8.6M en RAF/reconstruccion (10.5%), <strong>$16.1M sin RAF (19.6%)</strong>. Solo 7.97% de conversion mensual. 4 cortes distintos muestran 4 cifras distintas. Por linea: BDL 47% sin estimar, KK 37%, BOP 35%, TD 25%, ECS 23%.
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+<strong>$24.8M que no se puede cobrar</strong>. Cada mes adicional de atraso genera ~$160K de costo financiero.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 3.6 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Soporte documental &mdash; RAF y folio Gestioo</div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+<strong>70.58% sin RAF</strong> ($16.79M). <strong>68.6% sin folio Gestioo</strong> ($16.33M). BDL 98.2% sin folio ($6.03M). TD 94.7%. <strong>$16.3M sin NI oficio NI folio</strong> = maximo riesgo de no poder cobrar.
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+Sin RAF ni folio Gestioo, no hay soporte para construir estimaciones. Este monto esta en riesgo de conversion a perdida.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 3.7 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Aging ejecutado sin estimar</div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+<strong>205 dias promedio</strong>. KK 294 dias ($2.17M), ECS 221 dias ($8.86M), BDL 192 dias ($6.69M), TD 183 dias ($1.68M), BOP 129 dias ($4.19M). Cada mes adicional = ~$160K de costo financiero adicional.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- Proyecto Eje 03 -->
+<div class="proy-card">
+<div class="proy-head">
+<div class="ph-icon">&#128176;</div>
+<div><div class="ph-title">Propuesta de Proyecto &mdash; Eje 03</div><div class="ph-sub">Comercializacion & Pipeline</div></div>
+</div>
+<div class="proy-body">
+<div class="proy-col">
+<h4>Modelos a disenar</h4>
+<ul>
+<li>Modelo de documentacion integrada en la operacion</li>
+<li>Modelo de Trazabilidad de Estimacion y Facturacion</li>
+<li>Modelo de SLA y gobernanza de estimaciones / cobranza</li>
+<li>Modelo de Torre de Control de Monetizacion</li>
+<li>Modelo de disponibilidad de refacciones criticas y S&amp;OP</li>
+</ul>
+</div>
+<div class="proy-col">
+<h4>Entregables clave</h4>
+<ul>
+<li>Checklist digital 5 gates por OT</li>
+<li>Pipeline Kanban de estimaciones con SLAs</li>
+<li>Torre de Control de Monetizacion (Power BI)</li>
+<li>Rutina semanal de desbloqueo</li>
+<li>Plan de liquidacion de inventario excedente</li>
+<li>Template S&amp;OP mensual</li>
+</ul>
+</div>
+<div class="proy-col">
+<h4>Indicadores de exito</h4>
+<ul>
+<li>Cumplimiento venta: 53% &rarr; &gt;85%</li>
+<li>Dias estimacion: 205 &rarr; &lt;30</li>
+<li>Ejecutado sin estimar: $24.8M &rarr; &lt;$5M</li>
+<li>Inventario excedente: $5.1M &rarr; &lt;$2M</li>
+<li>Costo financiero/venta: 34% &rarr; &lt;15%</li>
+</ul>
+</div>
+<div class="proy-col">
+<h4>Quien ejecuta</h4>
+<ul>
+<li><span class="who-tag who-london" style="margin-right:4px">London G02</span> Diseno de modelos y torre de control</li>
+<li><span class="who-tag who-geminis" style="margin-right:4px">Geminis 01</span> Depuracion PVs e inventario</li>
+</ul>
+</div>
+</div>
+<div class="proy-ref"><strong>Referencia de industria:</strong> Los OFS majors reportan DSO (Days Sales Outstanding) de 60-90 dias. SUMIMSA esta en 205+ dias para la etapa de estimacion sola, antes de la facturacion. La torre de control de monetizacion es practica estandar en contratos PEMEX de alto volumen.</div>
+</div>
+
+</div></section>
+
+
+<!-- ============================================ -->
+<!-- EJE 04 -->
+<!-- ============================================ -->
+<section class="sg" id="e04"><div class="ctn">
+
+<div class="eje-hdr">
+<div class="eje-num">Eje 04</div>
+<div class="eje-title">Programacion y Ejecucion de OTs</div>
+<div class="eje-question">&iquest;Que tan bien planeo y ejecuto el servicio? OTs, tiempos de ciclo, costo real.</div>
+<div class="eje-score"><div class="sv" style="color:var(--red)">1.4</div><div class="sl">/ 5 madurez</div></div>
+</div>
+
+<div class="flow-bar">
+<div class="flow-step"><div class="fs-box">OT creada</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Programacion</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Asignacion cuadrilla</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Ejecucion</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Registro bitacora</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Evidencia (5 gates)</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Costeo</div></div>
+</div>
+
+<h3 class="sh3">Oportunidades identificadas</h3>
+
+<!-- OP 4.1 -->
+<div class="op-card">
+<div class="op-head">
+<div><span class="op-star">&#11088;</span><span class="op-title">OTs programadas vs reactivas</span></div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+<strong>24% asertividad</strong>. 76% de las OTs son reactivas. De 1,850 programadas, 917 se ejecutaron, pero solo <strong>222 provenian de la programacion</strong>. BOP: $17.7M programado vs $1.9M ejecutado (11%). BDL: 294 OTs con carga tardia = $2.9M invisible. La asertividad nunca ha superado 34%.
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+La operacion reactiva genera sobrecostos (overtime, subcontrato de emergencia, refacciones express), impide la planificacion de personal y hace imposible el control de costos por OT.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 4.2 -->
+<div class="op-card">
+<div class="op-head">
+<div><span class="op-star">&#11088;</span><span class="op-title">Calendarizacion MTTO basada en OEM</span></div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+No hay planes preventivos estandarizados por fabricante. Gestioo tiene modulo de mantenimiento preventivo: <strong>capacitado, firmado, NO SE USA (1/5)</strong>. Los arboles de equipos y rutinas ya se estan construyendo pero no se cargan al sistema. Cada equipo se mantiene segun la experiencia del tecnico, no segun el OEM.
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+Sin planes preventivos, el mantenimiento es inherentemente reactivo. Se paga por un modulo CMMS que no se usa.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 4.3 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Conversion programacion &rarr; ejecucion por linea</div>
+<span class="mat-badge m2">Madurez: 2/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+TD 72%, ECS 66%, BDL 48%, RSS 43%, BOP 13%. La programacion dice una cosa, la ejecucion hace otra. <strong>84 OTs BOP no ejecutadas</strong>. La desconexion entre programacion y ejecucion es generalizada.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 4.4 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">OTs creadas antes de ejecutar</div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+<strong>33% con carga tardia</strong> (304 OTs = $3M). BDL 56% con carga tardia. 68.6% sin folio Gestioo. La OT se crea <strong>despues</strong> de ejecutar el servicio, no antes &mdash; invirtiendo la logica del control operativo.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 4.5 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Adopcion Gestioo CMMS</div>
+<span class="mat-badge m2">Madurez: 2/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+<strong>2.8/5 adopcion global</strong>. 6 modulos completos, 6 parciales, 3 ausentes. <strong>3 modulos pagados sin usar</strong>: MTTO preventivo, Stock MRO, carga en tiempo real. El sistema tiene las capacidades pero la adopcion es inconsistente entre lineas.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 4.6 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Costeo por OT &mdash; MO + refacciones + indirectos</div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+El costo por OT no es visible antes del CFDI. De cada $1 de ingreso: <strong>$0.33 refacciones + $0.25 nomina + $0.13 subcontrato + $0.08 operacion + $0.03 Castano = $0.81 costo</strong>. Mas $0.22 Matriz + $0.03 G&amp;A = 107% del ingreso en gastos antes de financiamiento. Mas $0.34 de costo financiero = <strong>-45% UAI</strong>.
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+Sin visibilidad de costo por OT, no se puede evaluar rentabilidad de servicios individuales. Referencia OFS: NOV 17.5% margen operativo, SLB 18-20%, Halliburton 16-20%.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 4.7 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Markup refacciones vs costo servicios</div>
+<span class="mat-badge m2">Madurez: 2/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+Markup refacciones promedio: <strong>69%</strong> (ECS 74%, BOP 71%, KK 107%). Las refacciones SI generan margen. El problema es el <strong>costo de ejecutar servicios</strong>. Nomina sobre venta por linea: BDL 71%, TD 44%, KK 26%, ECS 15%, BOP 7%.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 4.8 -->
+<div class="op-card">
+<div class="op-head">
+<div><span class="op-star">&#11088;</span><span class="op-title">Ratios HC/equipo atados a facturacion</span></div>
+<span class="mat-badge m2">Madurez: 2/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+ECS 8.1 HC/equipo, BDL 4.45, TD 5.25, BOP 0.35, KK 1.75. Los ratios existen en el organigrama pero <strong>no estan atados a la venta</strong>. Venta por HC: ECS $30K, TD $21K, KK $15K, BDL $10K, BOP $110K. BDL: 89 personas generando $10K/persona y costando $7K de nomina/persona. Quedan solo $3K para todo lo demas.
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+El headcount es rigido cuando la actividad fluctua. BDL tiene nomina fija de $613K acumulado con ingresos de $862K &mdash; la nomina consume el 71% del ingreso.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 4.9 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Cuadrilla SWAT compartida entre lineas</div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+<strong>Inexistente</strong>. Cada linea opera con cuadrilla fija. Un soldador de BDL no atiende ECS. Un mecanico de BOP no se reasigna a KK. No hay cross-training ni pool de recursos compartidos. Potencial de reduccion: 30-40% en cuadrilla de mantenimiento.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 4.10 -->
+<div class="op-card">
+<div class="op-head">
+<div><span class="op-star">&#11088;</span><span class="op-title">Herramientas de Campo (Digitales) y Gestioo en sitio</span></div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+4 niveles de madurez digital: <strong>Nivel 1 Apps</strong> (solo BDL tiene app), <strong>Nivel 2 Dashboards</strong> (BDL parcial), <strong>Nivel 3 IoT</strong> (ninguno), <strong>Nivel 4 ERP integrado</strong> (ninguno). Gestioo en sitio es prioridad #1. 3 modulos pagados sin usar: preventivo, Stock MRO, carga tiempo real.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- Proyecto Eje 04 -->
+<div class="proy-card">
+<div class="proy-head">
+<div class="ph-icon">&#9874;</div>
+<div><div class="ph-title">Propuesta de Proyecto &mdash; Eje 04</div><div class="ph-sub">Programacion y Ejecucion de OTs</div></div>
+</div>
+<div class="proy-body">
+<div class="proy-col">
+<h4>Modelos a disenar</h4>
+<ul>
+<li>Modelo de gestion de mantenimiento y confiabilidad</li>
+<li>Modelo de Funcionalidad de CMMS</li>
+<li>Modelo de estandarizacion de planes preventivos</li>
+<li>Modelo de costeo operativo por OT / servicio</li>
+<li>Modelo de capacidad y balance de personal</li>
+<li>Modelo de Cuadrilla de Servicios (SWAT)</li>
+</ul>
+</div>
+<div class="proy-col">
+<h4>Entregables clave</h4>
+<ul>
+<li>Planes preventivos OEM por equipo/linea en Gestioo</li>
+<li>App de campo replicada a todas las lineas</li>
+<li>Costeo por OT integrado</li>
+<li>Modelo Squat Crew piloto</li>
+<li>Stock MRO en Gestioo</li>
+<li>Regla de oro: OTs +30 dias = caducidad</li>
+</ul>
+</div>
+<div class="proy-col">
+<h4>Indicadores de exito</h4>
+<ul>
+<li>Asertividad: 24% &rarr; &gt;70%</li>
+<li>Reactivas: 76% &rarr; &lt;40%</li>
+<li>Carga tardia: 33% &rarr; &lt;5%</li>
+<li>CdV/Venta: 81% &rarr; &lt;65%</li>
+<li>Nomina/Venta: 25% &rarr; &lt;18%</li>
+<li>Adopcion Gestioo: 2.8 &rarr; 4.5/5</li>
+</ul>
+</div>
+<div class="proy-col">
+<h4>Quien ejecuta</h4>
+<ul>
+<li><span class="who-tag who-london" style="margin-right:4px">London G02</span> Diseno de modelos, costeo, Squat Crew</li>
+<li><span class="who-tag who-sub" style="margin-right:4px">Subdirectores</span> Adopcion en campo</li>
+</ul>
+</div>
+</div>
+<div class="proy-ref"><strong>Referencia de industria:</strong> Los OFS majors operan con >80% mantenimiento programado vs reactivo. SLB reporta 92% planned maintenance en sus centros de servicio. La cuadrilla SWAT multidisciplinaria es practica estandar en operaciones de perforacion offshore.</div>
+</div>
+
+</div></section>
+
+
+<!-- ============================================ -->
+<!-- EJE 05 -->
+<!-- ============================================ -->
+<section class="sw" id="e05"><div class="ctn">
+
+<div class="eje-hdr">
+<div class="eje-num">Eje 05</div>
+<div class="eje-title">Calidad & Confiabilidad</div>
+<div class="eje-question">&iquest;El servicio es confiable? Satisfaccion PEMEX, garantias, ciclo de mejora. Confiabilidad = Contratos renovados.</div>
+<div class="eje-score"><div class="sv" style="color:var(--orange)">1.8</div><div class="sl">/ 5 madurez</div></div>
+</div>
+
+<div class="flow-bar">
+<div class="flow-step"><div class="fs-box">Servicio ejecutado</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Satisfaccion cliente</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">NPT</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Retrabajos</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Refacciones criticas</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Mejora continua</div><div class="fs-arrow">&rarr;</div></div>
+<div class="flow-step"><div class="fs-box">Contrato renovado</div></div>
+</div>
+
+<h3 class="sh3">Oportunidades identificadas</h3>
+
+<!-- OP 5.1 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">NPT atribuible a SUMIMSA &mdash; FORTALEZA</div>
+<span class="mat-badge m3">Madurez: 3/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+<strong>5.9% del NPT total</strong>. 28 fallas, 203.5 horas. PEMEX genera el 81.9% de su propio NPT. PM-324 = 44% del NPT SUMIMSA (evento atipico). Sin ese evento: 3.3%. SUMIMSA esta por debajo de Nabors y Burgos en proporcion de NPT.
+</div></div>
+<div class="op-section"><div class="op-label">Impacto</div><div class="op-text">
+La calidad ES el foso competitivo de SUMIMSA. <strong>Confiabilidad = contratos renovados</strong>. Este es uno de los pocos indicadores donde la empresa esta bien posicionada y debe proteger.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-sub">Subdirectores</span></div>
+</div>
+
+<!-- OP 5.2 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Retrabajos, NPS, satisfaccion PEMEX</div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+<strong>No se mide NPS</strong>. No hay registro de retrabajos. No hay encuesta post-servicio. QHSE estable: 0 accidentes Feb 2026, 100% SSPA en todos los contratos. Pero QHSE esta desconectado de satisfaccion del cliente.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- OP 5.3 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Fill rate refacciones criticas</div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+<strong>No se mide</strong>. No hay clasificacion de refacciones criticas. Sin min/max configurados. BOP tiene <strong>$5.9M en PVs sin recibir (72%)</strong> &mdash; el problema no es demanda, es abasto. La falta de fill rate es la principal restriccion para BOP.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-geminis">Geminis 01</span></div>
+</div>
+
+<!-- OP 5.4 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Rotacion y excedente inventario</div>
+<span class="mat-badge m1">Madurez: 1/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+<strong>1.7x rotacion</strong> (objetivo 4-6x). $5.1M en excedente. BDL con 22.6 meses de inventario y 0.4x rotacion = capital muerto. ECS tiene 7.0x rotacion (necesita mas stock, no menos). $4.6M con mas de 6 meses de antiguedad. Sin el excedente, el EBITDA seria <strong>+$1.56M</strong> en lugar de -$389K.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-geminis">Geminis 01</span></div>
+</div>
+
+<!-- OP 5.5 -->
+<div class="op-card">
+<div class="op-head">
+<div class="op-title">Gasto financiero por linea</div>
+<span class="mat-badge m2">Madurez: 2/5</span>
+</div>
+<div class="op-body">
+<div class="op-section"><div class="op-label">Situacion actual</div><div class="op-text">
+<strong>34% promedio sobre venta</strong>. ECS $871K (25% de su venta), BDL $471K (55%), BOP $267K (35%), TD $217K (50%), KK $126K (60%). El gasto se asigna por capital empleado (inventario + estimaciones pendientes), no por ingreso. Esto castiga desproporcionadamente a las lineas con mas estimaciones pendientes.
+</div></div>
+</div>
+<div class="op-footer"><span class="who-tag who-london">London G02</span></div>
+</div>
+
+<!-- Proyecto Eje 05 -->
+<div class="proy-card">
+<div class="proy-head">
+<div class="ph-icon">&#9989;</div>
+<div><div class="ph-title">Propuesta de Proyecto &mdash; Eje 05</div><div class="ph-sub">Calidad & Confiabilidad</div></div>
+</div>
+<div class="proy-body">
+<div class="proy-col">
+<h4>Modelos a disenar</h4>
+<ul>
+<li>Modelo de gestion de mantenimiento y confiabilidad</li>
+<li>Modelo de disponibilidad de refacciones criticas y S&amp;OP</li>
+</ul>
+</div>
+<div class="proy-col">
+<h4>Entregables clave</h4>
+<ul>
+<li>Encuesta NPS por linea (meta &gt;85%)</li>
+<li>Registro retrabajos con causa raiz en Gestioo</li>
+<li>Fill rate refacciones criticas con clasificacion ABC</li>
+<li>Root cause analysis PM-324</li>
+<li>Plan de liquidacion de inventario excedente</li>
+</ul>
+</div>
+<div class="proy-col">
+<h4>Indicadores de exito</h4>
+<ul>
+<li>NPT: &lt;4%</li>
+<li>NPS: &gt;85%</li>
+<li>Retrabajos: &lt;3%</li>
+<li>Fill rate: &gt;95%</li>
+<li>Rotacion inventario: 4-6x</li>
+<li>Gasto financiero/venta: &lt;15%</li>
+</ul>
+</div>
+<div class="proy-col">
+<h4>Quien ejecuta</h4>
+<ul>
+<li><span class="who-tag who-london" style="margin-right:4px">London G02</span> Diseno NPS, retrabajos, confiabilidad</li>
+<li><span class="who-tag who-geminis" style="margin-right:4px">Geminis 01</span> Fill rate, inventario</li>
+<li><span class="who-tag who-sub" style="margin-right:4px">Subdirectores</span> NPT, QHSE</li>
+</ul>
+</div>
+</div>
+<div class="proy-ref"><strong>Referencia de industria:</strong> Los OFS majors miden NPS por contrato trimestralmente. SLB reporta >95% first-time fix rate. La rotacion de inventario de refacciones en el sector es 4-6x. El gasto financiero como % de ventas no debe superar 10-15% en operaciones bien gestionadas.</div>
+</div>
+
+</div></section>
+
+
+<!-- ============================================ -->
+<!-- RESUMEN CONSOLIDADO -->
+<!-- ============================================ -->
+<section class="sd" id="resumen-final" style="padding:3.5rem 0"><div class="ctn">
+<div class="sl2" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.5)">Consolidado</div>
+<h2 class="st" style="margin-bottom:2rem">Resumen de Madurez por Eje</h2>
+
+<div class="tw2" style="border-color:rgba(255,255,255,.1)">
+<table>
+<thead><tr>
+<th style="background:rgba(255,255,255,.08);color:#94a3b8;border-color:rgba(255,255,255,.1)">Eje</th>
+<th style="background:rgba(255,255,255,.08);color:#94a3b8;border-color:rgba(255,255,255,.1)">Nombre</th>
+<th style="background:rgba(255,255,255,.08);color:#94a3b8;border-color:rgba(255,255,255,.1)">Madurez</th>
+<th style="background:rgba(255,255,255,.08);color:#94a3b8;border-color:rgba(255,255,255,.1)"># Oportunidades</th>
+<th style="background:rgba(255,255,255,.08);color:#94a3b8;border-color:rgba(255,255,255,.1)">Prioridad cliente</th>
+<th style="background:rgba(255,255,255,.08);color:#94a3b8;border-color:rgba(255,255,255,.1)">Principal responsable</th>
+</tr></thead>
+<tbody>
+<tr style="color:#e2e8f0">
+<td style="border-color:rgba(255,255,255,.08)"><strong>01</strong></td>
+<td style="border-color:rgba(255,255,255,.08)">Modelo Operativo & Lineas</td>
+<td style="border-color:rgba(255,255,255,.08)"><span class="mat-badge m1">1.2/5</span></td>
+<td style="border-color:rgba(255,255,255,.08)">5</td>
+<td style="border-color:rgba(255,255,255,.08)">2</td>
+<td style="border-color:rgba(255,255,255,.08)"><span class="who-tag who-london">London G02</span></td>
+</tr>
+<tr style="color:#e2e8f0">
+<td style="border-color:rgba(255,255,255,.08)"><strong>02</strong></td>
+<td style="border-color:rgba(255,255,255,.08)">Oportunidad de Contrato</td>
+<td style="border-color:rgba(255,255,255,.08)"><span class="mat-badge m2">1.8/5</span></td>
+<td style="border-color:rgba(255,255,255,.08)">5</td>
+<td style="border-color:rgba(255,255,255,.08)">2</td>
+<td style="border-color:rgba(255,255,255,.08)"><span class="who-tag who-london">London G02</span></td>
+</tr>
+<tr style="color:#e2e8f0">
+<td style="border-color:rgba(255,255,255,.08)"><strong>03</strong></td>
+<td style="border-color:rgba(255,255,255,.08)">Comercializacion & Pipeline</td>
+<td style="border-color:rgba(255,255,255,.08)"><span class="mat-badge m1">1.4/5</span></td>
+<td style="border-color:rgba(255,255,255,.08)">7</td>
+<td style="border-color:rgba(255,255,255,.08)">2</td>
+<td style="border-color:rgba(255,255,255,.08)"><span class="who-tag who-london">London G02</span></td>
+</tr>
+<tr style="color:#e2e8f0">
+<td style="border-color:rgba(255,255,255,.08)"><strong>04</strong></td>
+<td style="border-color:rgba(255,255,255,.08)">Programacion y Ejecucion</td>
+<td style="border-color:rgba(255,255,255,.08)"><span class="mat-badge m1">1.4/5</span></td>
+<td style="border-color:rgba(255,255,255,.08)">10</td>
+<td style="border-color:rgba(255,255,255,.08)">4</td>
+<td style="border-color:rgba(255,255,255,.08)"><span class="who-tag who-london">London G02</span></td>
+</tr>
+<tr style="color:#e2e8f0">
+<td style="border-color:rgba(255,255,255,.08)"><strong>05</strong></td>
+<td style="border-color:rgba(255,255,255,.08)">Calidad & Confiabilidad</td>
+<td style="border-color:rgba(255,255,255,.08)"><span class="mat-badge m2">1.8/5</span></td>
+<td style="border-color:rgba(255,255,255,.08)">5</td>
+<td style="border-color:rgba(255,255,255,.08)">0</td>
+<td style="border-color:rgba(255,255,255,.08)"><span class="who-tag who-london">London G02</span></td>
+</tr>
+<tr style="color:#e2e8f0;font-weight:900;background:rgba(255,255,255,.03)">
+<td style="border-color:rgba(255,255,255,.08)" colspan="2"><strong>TOTAL / PROMEDIO</strong></td>
+<td style="border-color:rgba(255,255,255,.08)"><span class="mat-badge m1">1.6/5</span></td>
+<td style="border-color:rgba(255,255,255,.08)"><strong>32</strong></td>
+<td style="border-color:rgba(255,255,255,.08)"><strong>10</strong></td>
+<td style="border-color:rgba(255,255,255,.08)">&mdash;</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:2rem">
+<div style="text-align:center">
+<div style="font-size:.68rem;color:rgba(255,255,255,.4);margin-bottom:.5rem">EJE 01</div>
+<div style="height:8px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden"><div style="width:24%;height:100%;background:var(--red);border-radius:4px"></div></div>
+<div style="font-size:.78rem;font-weight:700;color:var(--red);margin-top:.3rem">1.2</div>
+</div>
+<div style="text-align:center">
+<div style="font-size:.68rem;color:rgba(255,255,255,.4);margin-bottom:.5rem">EJE 02</div>
+<div style="height:8px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden"><div style="width:36%;height:100%;background:var(--orange);border-radius:4px"></div></div>
+<div style="font-size:.78rem;font-weight:700;color:var(--orange);margin-top:.3rem">1.8</div>
+</div>
+<div style="text-align:center">
+<div style="font-size:.68rem;color:rgba(255,255,255,.4);margin-bottom:.5rem">EJE 03</div>
+<div style="height:8px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden"><div style="width:28%;height:100%;background:var(--red);border-radius:4px"></div></div>
+<div style="font-size:.78rem;font-weight:700;color:var(--red);margin-top:.3rem">1.4</div>
+</div>
+<div style="text-align:center">
+<div style="font-size:.68rem;color:rgba(255,255,255,.4);margin-bottom:.5rem">EJE 04</div>
+<div style="height:8px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden"><div style="width:28%;height:100%;background:var(--red);border-radius:4px"></div></div>
+<div style="font-size:.78rem;font-weight:700;color:var(--red);margin-top:.3rem">1.4</div>
+</div>
+<div style="text-align:center">
+<div style="font-size:.68rem;color:rgba(255,255,255,.4);margin-bottom:.5rem">EJE 05</div>
+<div style="height:8px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden"><div style="width:36%;height:100%;background:var(--orange);border-radius:4px"></div></div>
+<div style="font-size:.78rem;font-weight:700;color:var(--orange);margin-top:.3rem">1.8</div>
+</div>
+</div>
+
+</div></section>
+
+
+<!-- ============================================ -->
+<!-- SIGUIENTE PASO -->
+<!-- ============================================ -->
+<section class="sw" id="siguiente-paso" style="padding:3.5rem 0"><div class="ctn">
+
+<div style="text-align:center;max-width:800px;margin:0 auto">
+<div class="sl2 gr">Siguiente Paso</div>
+<h2 class="st" style="margin-bottom:1rem">De diagnostico a accion</h2>
+<p style="font-size:.95rem;color:var(--g500);line-height:1.85;margin-bottom:2rem">
+El proyecto <strong>Geminis 02</strong> con acompanamiento de London Consulting Group abarca los ejes 01&ndash;05 en <strong>34 semanas</strong>. La definicion de quick wins arranca en la <strong>Semana 1</strong>. El diagnostico presentado en este reporte es la base para el diseno detallado de cada modelo operativo.
+</p>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-bottom:2rem">
+<div class="card" style="border-top:4px solid var(--red)">
+<div style="font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--red);font-weight:700;margin-bottom:.5rem">Semanas 1&ndash;4</div>
+<div style="font-size:1.1rem;font-weight:900;margin-bottom:.5rem">Quick Wins</div>
+<div style="font-size:.84rem;color:var(--g600);line-height:1.7">Tarea fuerza estimaciones, censo equipos, clasificacion inventario ABC, regla OTs +30 dias</div>
+</div>
+<div class="card" style="border-top:4px solid var(--accent)">
+<div style="font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:700;margin-bottom:.5rem">Semanas 5&ndash;12</div>
+<div style="font-size:1.1rem;font-weight:900;margin-bottom:.5rem">Disenos</div>
+<div style="font-size:.84rem;color:var(--g600);line-height:1.7">Presupuesto 601 bottom-up, modelo productividad HC, pipeline Kanban Gestioo, dashboard PBI, diseno Squat Crew</div>
+</div>
+<div class="card" style="border-top:4px solid var(--lcg)">
+<div style="font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--lcg);font-weight:700;margin-bottom:.5rem">Semanas 13&ndash;28</div>
+<div style="font-size:1.1rem;font-weight:900;margin-bottom:.5rem">Implementacion</div>
+<div style="font-size:.84rem;color:var(--g600);line-height:1.7">S&amp;OP integrado BC-Gestioo, liquidacion inv. excedente, encuesta PEMEX, piloto Squat Crew</div>
+</div>
+<div class="card" style="border-top:4px solid var(--gold)">
+<div style="font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--gold);font-weight:700;margin-bottom:.5rem">Semanas 29&ndash;34</div>
+<div style="font-size:1.1rem;font-weight:900;margin-bottom:.5rem">Estabilizacion</div>
+<div style="font-size:.84rem;color:var(--g600);line-height:1.7">Cuarto de Control operando, KPIs en rutina, auditoria SGI, coaching cierre brechas</div>
+</div>
+</div>
+
+<div class="co cgr" style="text-align:center">
+<div class="cot" style="font-size:1.1rem">Criterio de exito</div>
+<div class="cob" style="font-size:.9rem">EBITDA Talleres &gt;15% &bull; Estimaciones &lt;30 dias &bull; Inventario en 4 meses &bull; Cumplimiento ingreso &gt;85%</div>
+</div>
+
+<div style="text-align:center;margin-top:2rem">
+<p style="font-size:.82rem;color:var(--g400)">Documento complementario: <strong style="color:var(--g600)">Playbook de Eficiencia Operativa (propuesta_geminis_02_operaciones.html)</strong></p>
+</div>
+
+</div></section>
+
+
+<!-- FOOTER -->
+<div class="footer">
+<div class="fi">
+<img src="sumimsa.png" alt="SUMIMSA">
+<div class="ft">
+Proyecto GEMINIS &bull; London Consulting Group &times; SUMIMSA &bull; Abril 2026<br>
+Confidencial &mdash; Uso interno
+</div>
+<img src="lcg-logo.png" alt="LCG">
+</div>
+</div>
+
+<script>
+function cT(){document.querySelector('.toc-p').classList.remove('open');document.querySelector('.toc-o').classList.remove('show')}
+</script>
+</body>
+</html>
